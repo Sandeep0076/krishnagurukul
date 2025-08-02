@@ -1,0 +1,60 @@
+{
+  "gallery": [
+    {
+      "id": 1,
+      "url": "images/gallery/School-Front.JPG",
+      "title": "School Front View",
+      "caption": "Main entrance of Krishna Gurukul School",
+      "category": "campus"
+    },
+    {
+      "id": 2,
+      "url": "images/gallery/School-Building-1.JPG",
+      "title": "School Building",
+      "caption": "Modern school building with excellent facilities",
+      "category": "campus"
+    },
+    {
+      "id": 3,
+      "url": "images/gallery/computer-lab.JPG",
+      "title": "Computer Lab",
+      "caption": "State-of-the-art computer laboratory",
+      "category": "facilities"
+    },
+    {
+      "id": 4,
+      "url": "images/gallery/class-room.jpeg",
+      "title": "Classroom",
+      "caption": "Bright and spacious classroom environment",
+      "category": "facilities"
+    },
+    {
+      "id": 5,
+      "url": "images/gallery/prayer.jpeg",
+      "title": "Morning Prayer",
+      "caption": "Daily morning prayer assembly",
+      "category": "activities"
+    },
+    {
+      "id": 6,
+      "url": "images/gallery/yoga.jpeg",
+      "title": "Yoga Session",
+      "caption": "Students practicing yoga for physical and mental wellness",
+      "category": "activities"
+    },
+    {
+      "id": 7,
+      "url": "images/gallery/extra-1.jpeg",
+      "title": "Extra-curricular Activities",
+      "caption": "Students engaged in various extra-curricular activities",
+      "category": "activities"
+    },
+    {
+      "id": 8,
+      "url": "images/gallery/childerns.jpeg",
+      "title": "Happy Students",
+      "caption": "Our joyful students during playtime",
+      "category": "students"
+    }
+  ]
+} 

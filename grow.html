@@ -1,283 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <title>Grow | Krishna Gurukul School</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-        <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-  />
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Student Growth & Development at Krishna Gurukul School - Nurturing every child's potential through comprehensive development programs.">
+    <meta name="keywords" content="Krishna Gurukul School, student growth, development, education">
+    <meta name="author" content="Krishna Gurukul School">
+    
+    <title>Student Growth - Krishna Gurukul School</title>
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/logo-180.png" type="image/x-icon">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
-    <header>
-        <div class="color-secondary-bg py-1">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <div id="google_translate_element"></div>
-                    </div>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <!-- Logo -->
+                <div class="logo">
+                    <img src="images/logo-250.png" alt="Krishna Gurukul School Logo">
                 </div>
-            </div>
+                
+                <!-- Navigation Menu -->
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about-us.html" class="nav-link">About Us</a></li>
+                    <li><a href="academics.html" class="nav-link">Academics</a></li>
+                    <li><a href="admission.html" class="nav-link">Admissions</a></li>
+                    <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                
+                <!-- Language Selector -->
+                <div class="language-selector">
+                    <button class="language-btn" aria-label="Language Options">
+                        <i class="fas fa-globe"></i> Language
+                    </button>
+                    <div id="google_translate_element" style="display: none;"></div>
+                </div>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
         </div>
-        <nav class="navbar navbar-expand-lg bg-light">
-            <div class="container">
-                    <a class="navbar-brand" href="index.html"><img src="./images/20240217_110626.png" width="180" height="144" alt="Krishna Gurukul School"></a>           <button formsappId="65d417fd3cd878614f31c87c"></button>
-<script src="https://forms.app/static/embed.js" type="text/javascript" async defer onload="new formsapp('65d417fd3cd878614f31c87c', 'popup', {'overlay':'rgba(45,45,45,0.5)','button':{'color':'#FF0000','text':'Admission Query '},'width':'800px','height':'600px','openingAnimation':{'entrance':'animate__fadeIn','exit':'animate__fadeOut'}});"></script>        
-                    <div>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                            aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav">
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle color-secondary" href="index.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                      Home
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                      <li><a class="dropdown-item" href="about-us.html">About Us</a></li>
-                                      <li><a class="dropdown-item" href="about-us.html#vision-mision">Vision & Mision</a></li>
-                                      <li><a class="dropdown-item" href="about-us.html#principal-desk">Principal Desk</a></li>
-                                    </ul>
-                                  </li>
-                                <li class="nav-item">
-                                    <a class="nav-link color-secondary" href="admission.html">Admission</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link color-secondary" href="academics.html">Academics</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link color-secondary" href="gallery.html">Gallery</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link color-secondary" href="https://www.youtube.com/@krishnagurukul5085" target="_blank">Media</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-            
-        </nav>
     </header>
-    <section class="inner-hero py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <h2 class="text-white">Grow</h2>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html" class="text-white">Home</a></li>
-                            <li class="breadcrumb-item color-yellow" aria-current="page">Grow</li>
-                        </ol>
-                    </nav>
+
+    <!-- Main Content -->
+    <main style="margin-top: 100px;">
+        <!-- Redirect Notice -->
+        <section class="section">
+            <div class="container">
+                <div class="text-center">
+                    <h1 class="text-navy">Student Growth & Development</h1>
+                    <p style="font-size: 1.2rem; margin: 2rem 0;">You're looking for information about student growth and development.</p>
+                    <p>This content has been integrated into our main sections for better navigation.</p>
+                    
+                    <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 3rem; flex-wrap: wrap;">
+                        <a href="academics.html" class="hero-btn">
+                            <i class="fas fa-graduation-cap"></i> Academic Programs
+                        </a>
+                        <a href="about-us.html" class="hero-btn">
+                            <i class="fas fa-heart"></i> Our Philosophy
+                        </a>
+                        <a href="admission.html" class="hero-btn">
+                            <i class="fas fa-user-plus"></i> Join Us
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>        
-    </section>
-    <section class="py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center mb-lg-5 mb-4">
-                    <h2 class="color-secondary">Nurturing Growth: Guiding Children Towards Mental and Physical Well-being</h2>
+        </section>
+
+        <!-- Quick Info -->
+        <section class="section section-alt">
+            <div class="container">
+                <div class="features">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <h3>Holistic Growth</h3>
+                        <p>We focus on the complete development of every child - academic, physical, emotional, and spiritual.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>Individual Potential</h3>
+                        <p>Every student is unique, and we nurture their individual talents and capabilities.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Community Values</h3>
+                        <p>Building character and values that help students become responsible global citizens.</p>
+                    </div>
                 </div>
-                <div class="col-12">
-                    <div class="row align-items-center">
-                        <div class="offset-lg-1 col-lg-5 col-md-6">                    
-                            <p>In a world that is constantly evolving, our role as educators, parents, and mentors is to guide the next generation towards a path of growth, one that encompasses not just academic success but also nurtures their mental and physical well-being. The concept of growth in this context transcends mere physical development; it delves into the realms of character building, empathy, resilience, and overall personal development. Our approach to growth is about helping children become better individuals, both for themselves and for society as a whole.</p>           
-                       </div>
-                       <div class="col-lg-5 col-md-6">
-                           <img src="./images/growth.png" class="img-fluid rounded-5 animate__animated animate__fadeInRight color-primary-bg" alt="enroll Krishna Gurukul School">
-                       </div>
-                       <div class="offset-lg-1 col-lg-10">
-                        <h4>1. The Holistic Approach to Growth</h4>
-                        <p>At our core, we believe in a holistic approach to growth. It's not just about helping children excel academically or in sports; it's about nurturing their minds and bodies in a well-rounded manner. We understand that mental and physical well-being are interconnected. To promote healthy growth, we must address both aspects, ensuring that children are equipped to face the complexities of life with resilience and empathy.</p>
+            </div>
+        </section>
+    </main>
 
-                        <h4>2. Nurturing Mental Health</h4>
-                        <p>In the pursuit of growth, one of our primary focuses is nurturing mental health. This involves creating a safe and supportive environment where children can express themselves, learn to manage their emotions, and build a strong sense of self-esteem. We provide tools and guidance to help them navigate the ups and downs of life and develop the emotional intelligence necessary for building meaningful relationships.</p>
-
-                        <h4>3. Physical Wellness</h4>
-                        <p>Physical growth is equally important in the journey towards becoming well-rounded individuals. We encourage children to lead active lives through sports and physical activities. A strong body not only fosters good health but also builds discipline, teamwork, and a sense of accomplishment. Our programs aim to help children develop a lifelong love for physical fitness.</p>
-
-                        <h4>4. Character Development</h4>
-                        <p>Growth is not just about the mind and body; it's also about character. We emphasize the importance of character development, instilling values like honesty, kindness, and responsibility. Through mentoring and various activities, we guide children to become compassionate and responsible individuals who contribute positively to their communities.</p>
-
-                        <h4>5. Critical Thinking and Problem-Solving</h4>
-                        <p>Our approach to growth includes nurturing critical thinking and problem-solving skills. We encourage children to question, explore, and think creatively. By doing so, we empower them to face challenges with confidence and develop innovative solutions to real-world problems.
-                        </p>
-
-                        <h4>6. Resilience and Adaptability</h4>
-                        <p>Life is full of uncertainties and setbacks. We teach children the art of resilience – the ability to bounce back from adversity and adapt to change. Resilience is a crucial aspect of growth, as it helps children learn from their experiences and become more capable and confident individuals.</p>
-
-                        <h4>7. Fostering Empathy</h4>
-                        <p>A key component of growth is empathy. We believe that children who understand and appreciate the feelings of others are better equipped to build harmonious relationships and contribute to a compassionate society. Our programs and teachings encourage empathy, helping children become more caring and considerate individuals.</p>
-
-                        <h4>8. Becoming Better People</h4>
-                        <p>Ultimately, our goal is to guide children in becoming better people. We measure success not only by academic achievements but also by the values and qualities they possess. We aim to help them develop into responsible, compassionate, and confident individuals who are prepared to contribute positively to the world.</p>
-
-                        <p>In conclusion, our concept of growth goes beyond the mere physical or academic aspects. We believe that true growth encompasses mental and physical well-being, character development, resilience, empathy, and the ability to think critically. By nurturing these aspects, we help children become well-rounded individuals who are prepared to face life's challenges and become better people, not just for themselves but for the benefit of society as a whole. In this way, we contribute to a brighter and more compassionate future for all.</p>
-
-                        <h4></h4>
-                       </div>
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <!-- School Info -->
+                <div class="footer-section">
+                    <img src="images/logo-250.png" alt="Krishna Gurukul School" style="height: 60px; margin-bottom: 1rem;">
+                    <p>Inspiring Excellence, Nurturing Tradition. A premier educational institution dedicated to providing quality education with traditional values.</p>
+                    <div class="social-icons">
+                        <a href="https://www.youtube.com/@krishnagurukul5085" target="_blank" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://www.instagram.com/krishnagurukulschool2001/" target="_blank" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" aria-label="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
                     </div>
                 </div>
                 
-            </div>
-            <div class="row  align-items-center mt-5" id="vision-mision">
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="academics.html">Academics</a></li>
+                        <li><a href="admission.html">Admissions</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                    </ul>
+                </div>
                 
-                <div class="offset-lg-1 col-lg-5 col-md-6">
-                    <h2 class="color-primary">Mission</h2>
-                    <p>At <strong>KRISHNA GURUKUL SCHOOL,</strong> we prepare children for the future by
-                        providing knowledge and skills to achieve academic excellence, personal
-                        growth, and success in a safe, positive and diverse environment. We
-                        believe in a student centric philosophy, wherein we respect the
-                        individual differences and find success in each student in one way or the
-                        other. Students are valued for their individuality and diverse capabilities
-                        as they are taught to face the future and contribute to society with
-                        compassion, courage, knowledge and Vision.</p>
+                <!-- Contact Info -->
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p><i class="fas fa-map-marker-alt text-teal"></i> Krishna Gurukul School<br>
+                       Complete Address<br>
+                       City, State, PIN</p>
+                    <p><i class="fas fa-phone text-teal"></i> +91-XXXXX-XXXXX</p>
+                    <p><i class="fas fa-envelope text-teal"></i> info@krishnagurukulschool.in</p>
                 </div>
-                <div class="col-lg-5 col-md-6">
-                    <figure>
-                        <img src="./images/mision.jpg" class="img-fluid rounded-3" alt="">
-                    </figure>
-                    
-                </div>
-            </div>
-            <div class="row align-items-center mt-5">
                 
-                <div class="col-lg-5 col-md-6">
-                    <figure>
-                        <img src="./images/vision.jpg" class="img-fluid rounded-3" alt="">
-                    </figure>
-                    
-                </div>
-                <div class="offset-lg-1 col-lg-5 col-md-6">
-                    <h2 class="color-primary">Vision</h2>
-                    <p>At <strong>KRISHNA GURUKUL SCHOOL</strong> is to develop well rounded, confident
-                        and responsible individuals who aspire to achieve their full potential and
-                        enabling each student to flourish as a responsible citizen in the global
-                        community</p>
-
+                <!-- School Hours -->
+                <div class="footer-section">
+                    <h3>School Hours</h3>
+                    <p><strong>Monday - Friday:</strong><br>8:00 AM - 3:00 PM</p>
+                    <p><strong>Saturday:</strong><br>8:00 AM - 12:00 PM</p>
+                    <p><strong>Sunday:</strong><br>Closed</p>
+                    <p style="margin-top: 1rem;"><strong>Office Hours:</strong><br>9:00 AM - 4:00 PM</p>
                 </div>
             </div>
             
-            <div class="row align-items-center mt-5" id="principal-desk">
-                <div class="col-12 text-center mb-lg-5 mb-4">
-                    <h2 class="color-secondary">Introduction of Principal</h2>
-                    <p>Welcome to <strong>KRISHNA GURUKUL SCHOOL</strong> Dear Students, Parents</p>
-                </div>
-                <div class="offset-lg-1 col-lg-10">                    
-                    
-                    <p>I am thrilled to welcome you to <strong>KRISHNA GURUKUL SCHOOL,</strong> where
-                        education meets excellence. As the principal of this distinguished
-                        institution, I am honored to lead a team of dedicated educators, staff,
-                        and students who are committed to achieving academic success and
-                        personal growth.</p>
-                </div>
-                <div class="offset-lg-1 col-lg-5 col-md-6">                    
-                    <h2 class="color-primary">About Me</h2> 
-                    <p>
-                    I am principal of
-                    krishna gurukul
-                    school.I have 8 year
-                    experience in the
-                    educational field .My
-                    journey in education
-                    has been driven by
-                    the belief that every
-                    student has the
-                    potential to excel,
-                    and our mission at
-                    KRISHNA GURUKUL
-                    SCHOOL is to nurture
-                    that potential to its
-                    fullest. Our school
-                    always teach about
-                    ethic or moral values
-                    as well as relegion
-                    values with study.
-                    our school gets its
-                    done many other
-                    activities to
-                    children for make
-                    physically or
-                    mentally strong.
-                    I look forward to a
-                    fantastic academic
-                    year and working
-                    together with you to
-                    create a nurturing
-                    and challenging
-                    educational
-                    environment.Together
-                    , We will make a
-                    difference in the
-                    lives of our students
-                    and our community
-                    .Please feel free to
-                    reach out to me with
-                    any questions,
-                    Contact us 9501367809
-                    My office door is
-                    always openfor
-                    parents as well as
-                    students and I am
-                    here to support the
-                    growth and success of
-                    every student.
-                    Our mission at
-                    <strong>KRISHNA
-                    GURUKUL
-                    SCHOOL</strong>
-                    is to nurture that
-                    potential to its
-                    fullest. Educational
-                    Philosophy</p>
-                    <p><br><br>Warm regards,<br>
-                    Miss Deeksha Thakur,
-                    <strong>KRISHNA GURUKUL SCHOOL</strong></p>
-                </div>
-                <div class="col-md-6">          <button formsappId="65d421de3cd878f0d631ce7d"></button>
-<script src="https://forms.app/static/embed.js" type="text/javascript" async defer onload="new formsapp('65d421de3cd878f0d631ce7d', 'popup', {'overlay':'rgba(45,45,45,0)','button':{'color':'#FF2424','text':'Contact us Click Here'},'width':'800px','height':'600px','openingAnimation':{'entrance':'animate__fadeIn','exit':'animate__fadeOut'}});"></script>          
-                    <figure>
-                        <img src="./images/gallery/InShot_20240331_234258052.jpg" class="img-fluid rounded-3" alt="">
-                    </figure>
-                </div>
-                
+            <div class="footer-bottom">
+                <p>&copy; 2025 Krishna Gurukul School. All Rights Reserved. | Designed with ❤️ for Excellence in Education</p>
             </div>
         </div>
-                
-                 <a href="./images/gallery/staff/IMG-20240604-WA0000.jpg" class=" col-lg-4 col-md-6" data-sub-html="<h3>TEACHER NAME - SUBJECT</h3>">
-                    <img src="./images/gallery/staff/IMG-20240604-WA0000.jpg"  class="img-fluid shadow-sm"/>
-                </a>
-
-    </section>
-
-    <footer class="color-primary-bg text-white text-center py-3">
-        <div class="container">
-            &copy; 2023 Krishna Gurukul School. All rights reserved.
-        </div>
-        
     </footer>
+
+    <!-- JavaScript -->
+    <script type="module" src="js/main.js"></script>
     
+    <!-- Auto-redirect script -->
+    <script>
+        // Auto-redirect to academics page after 3 seconds
+        setTimeout(() => {
+            window.location.href = 'academics.html';
+        }, 3000);
+    </script>
+    
+    <!-- Google Translate -->
     <script type="text/javascript">// <![CDATA[
         function googleTranslateElementInit() {
         new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
         }
         // ]]></script>
         <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" type="text/javascript"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
 </body>
-
 </html>

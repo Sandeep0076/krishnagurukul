@@ -1,364 +1,411 @@
 <!DOCTYPE html>
 <html lang="en">
-    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <title>Gallery | Krishna Gurukul School</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lightgallery.min.css" integrity="sha512-F2E+YYE1gkt0T5TVajAslgDfTEUQKtlu4ralVq78ViNxhKXQLrgQLLie8u1tVdG2vWnB3ute4hcdbiBtvJQh0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/lightgallery.min.js" integrity="sha512-jEJ0OA9fwz5wUn6rVfGhAXiiCSGrjYCwtQRUwI/wRGEuWRZxrnxoeDoNc+Pnhx8qwKVHs2BRQrVR9RE6T4UHBg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Photo Gallery - Krishna Gurukul School. Explore our campus, activities, events, and student life through our comprehensive image gallery.">
+    <meta name="keywords" content="Krishna Gurukul School, gallery, photos, campus, activities, students, events">
+    <meta name="author" content="Krishna Gurukul School">
+    
+    <title>Gallery - Krishna Gurukul School</title>
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/logo-180.png" type="image/x-icon">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
-    <header>
-        <div class="color-secondary-bg py-1">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <div id="google_translate_element"></div>
-                    </div>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <!-- Logo -->
+                <div class="logo">
+                    <img src="images/logo-250.png" alt="Krishna Gurukul School Logo">
                 </div>
-            </div>
+                
+                <!-- Navigation Menu -->
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about-us.html" class="nav-link">About Us</a></li>
+                    <li><a href="academics.html" class="nav-link">Academics</a></li>
+                    <li><a href="admission.html" class="nav-link">Admissions</a></li>
+                    <li><a href="gallery.html" class="nav-link active">Gallery</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                
+                <!-- Language Selector -->
+                <div class="language-selector">
+                    <button class="language-btn" aria-label="Language Options">
+                        <i class="fas fa-globe"></i> Language
+                    </button>
+                    <div id="google_translate_element" style="display: none;"></div>
+                </div>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
         </div>
-        <nav class="navbar navbar-expand-lg bg-light">
-            <div class="container">
-                    <a class="navbar-brand" href="index.html"><img src="./images/20240217_110626.png" width="180" height="144" alt="Krishna Gurukul School"></a>             <button formsappId="65d417fd3cd878614f31c87c"></button>
-<script src="https://forms.app/static/embed.js" type="text/javascript" async defer onload="new formsapp('65d417fd3cd878614f31c87c', 'popup', {'overlay':'rgba(45,45,45,0.5)','button':{'color':'#FF0000','text':'Admission Query '},'width':'800px','height':'600px','openingAnimation':{'entrance':'animate__fadeIn','exit':'animate__fadeOut'}});"></script>      
-                    <div>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                            aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav">
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle color-secondary" href="index.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          
-
-                          Home
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                      <li><a class="dropdown-item" href="about-us.html">About Us</a></li>
-                                      <li><a class="dropdown-item" href="about-us.html#vision-mision">Vision & Mision</a></li>
-                                      <li><a class="dropdown-item" href="about-us.html#principal-desk">Principal Desk</a></li>
-                                    </ul>
-                                  </li>
-                                <li class="nav-item">
-                                    <a class="nav-link color-secondary" href="admission.html">Admission</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link color-secondary" href="academics.html">Academics</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link color-secondary" href="gallery.html">Gallery</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link color-secondary" href="https://www.youtube.com/@krishnagurukul5085" target="_blank">Media</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-
-        </nav>
     </header>
-    <section class="inner-hero py-5">
+
+    <!-- Main Content -->
+    <main style="margin-top: 100px;">
+        <!-- Page Hero Section -->
+        <section class="section bg-gray">
+            <div class="container">
+                <div class="text-center">
+                    <h1 class="text-navy">Photo Gallery</h1>
+                    <p style="font-size: 1.2rem; margin-top: 1rem;">Capturing moments of learning, growth, and joy at Krishna Gurukul School</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Filter Section -->
+        <section class="section">
+            <div class="container">
+                <div class="text-center mb-4">
+                    <h2 class="text-navy">Explore Our School Life</h2>
+                    <p>Browse through our collection of memories and moments</p>
+                </div>
+                
+                <!-- Category Filter Buttons -->
+                <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap;">
+                    <button class="filter-btn active" data-filter="all" style="padding: 0.8rem 2rem; border: 2px solid var(--secondary-teal); background: var(--secondary-teal); color: white; border-radius: 25px; cursor: pointer; font-weight: 600; transition: var(--transition-smooth);">
+                        All Photos
+                    </button>
+                    <button class="filter-btn" data-filter="campus" style="padding: 0.8rem 2rem; border: 2px solid var(--secondary-teal); background: transparent; color: var(--secondary-teal); border-radius: 25px; cursor: pointer; font-weight: 600; transition: var(--transition-smooth);">
+                        Campus
+                    </button>
+                    <button class="filter-btn" data-filter="facilities" style="padding: 0.8rem 2rem; border: 2px solid var(--secondary-teal); background: transparent; color: var(--secondary-teal); border-radius: 25px; cursor: pointer; font-weight: 600; transition: var(--transition-smooth);">
+                        Facilities
+                    </button>
+                    <button class="filter-btn" data-filter="activities" style="padding: 0.8rem 2rem; border: 2px solid var(--secondary-teal); background: transparent; color: var(--secondary-teal); border-radius: 25px; cursor: pointer; font-weight: 600; transition: var(--transition-smooth);">
+                        Activities
+                    </button>
+                    <button class="filter-btn" data-filter="students" style="padding: 0.8rem 2rem; border: 2px solid var(--secondary-teal); background: transparent; color: var(--secondary-teal); border-radius: 25px; cursor: pointer; font-weight: 600; transition: var(--transition-smooth);">
+                        Students
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Grid Section -->
+        <section class="section section-alt">
+            <div class="container">
+                <div id="gallery-container" class="gallery-grid">
+                    <!-- Gallery items will be loaded dynamically -->
+                    <div class="text-center" style="grid-column: 1 / -1;">
+                        <i class="fas fa-spinner fa-spin text-teal" style="font-size: 2rem;"></i>
+                        <p style="margin-top: 1rem;">Loading gallery images...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="section">
+            <div class="container">
+                <div class="text-center mb-4">
+                    <h2 class="text-navy">School in Numbers</h2>
+                    <p>Our journey of excellence reflected in numbers</p>
+                </div>
+                
+                <div class="features">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>500+</h3>
+                        <p>Happy Students</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <h3>25+</h3>
+                        <p>Dedicated Teachers</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3>20+</h3>
+                        <p>Years of Excellence</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3>100%</h3>
+                        <p>Board Results</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action Section -->
+        <section class="cta">
+            <div class="container">
+                <h2>Want to Be Part of These Memories?</h2>
+                <p>Join Krishna Gurukul School and create your own journey of success and happiness</p>
+                <a href="admission.html" class="cta-btn">Apply for Admission</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
         <div class="container">
-            <div class="row">
-                <div class="col">
-                    <h2 class="text-white">Gallery</h2>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html" class="text-white">Home</a></li>
-                            <li class="breadcrumb-item color-yellow" aria-current="page">Gallery</li>
-                        </ol>
-                    </nav>
+            <div class="footer-content">
+                <!-- School Info -->
+                <div class="footer-section">
+                    <img src="images/logo-250.png" alt="Krishna Gurukul School" style="height: 60px; margin-bottom: 1rem;">
+                    <p>Inspiring Excellence, Nurturing Tradition. A premier educational institution dedicated to providing quality education with traditional values.</p>
+                    <div class="social-icons">
+                        <a href="https://www.youtube.com/@krishnagurukul5085" target="_blank" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://www.instagram.com/krishnagurukulschool2001/" target="_blank" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" aria-label="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="academics.html">Academics</a></li>
+                        <li><a href="admission.html">Admissions</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p><i class="fas fa-map-marker-alt text-teal"></i> Krishna Gurukul School<br>
+                       Complete Address<br>
+                       City, State, PIN</p>
+                    <p><i class="fas fa-phone text-teal"></i> +91-XXXXX-XXXXX</p>
+                    <p><i class="fas fa-envelope text-teal"></i> info@krishnagurukulschool.in</p>
+                </div>
+                
+                <!-- School Hours -->
+                <div class="footer-section">
+                    <h3>School Hours</h3>
+                    <p><strong>Monday - Friday:</strong><br>8:00 AM - 3:00 PM</p>
+                    <p><strong>Saturday:</strong><br>8:00 AM - 12:00 PM</p>
+                    <p><strong>Sunday:</strong><br>Closed</p>
+                    <p style="margin-top: 1rem;"><strong>Office Hours:</strong><br>9:00 AM - 4:00 PM</p>
                 </div>
             </div>
             
-        </div>        
-    </section>
-    <section class="py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center mb-lg-5 mb-4">
-                    <h2 class="color-secondary">OUR SCHOOL</h2>
-                </div>
-                
-            </div>        
-            <div id="animated-thumbnails-gallery" class="row mb-5 row-gap-4">
-                <a href="./images/gallery/School-Front.JPG" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/School-Front.JPG" class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-                <a href="./images/gallery/School-Building-1.JPG" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/School-Building-1.JPG"  class="img-fluid shadow-sm h-100 object-fit-cover"/>
-                </a>
-                <a href="./images/gallery/School-Building-2.JPG" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/School-Building-2.JPG" class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-                <a href="./images/gallery/School-Building-3.JPG" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/School-Building-3.JPG"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-                <a href="./images/gallery/School-Building-4.JPG" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/School-Building-4.JPG"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-                <a href="./images/gallery/school-bus.jpeg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/school-bus.jpeg"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-                <a href="./images/gallery/school-bus-1.jpeg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/school-bus-1.jpeg"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Krishna Gurukul School. All Rights Reserved. | Designed with ❤️ for Excellence in Education</p>
             </div>
-            <div class="row">
-                <div class="col-12 text-center mb-lg-5 mb-4">
-                    <h2 class="color-secondary">OUR FACULTY</h2>
-                </div>
-                <a href="./images/gallery/staff/IMG_20240304_133227.jpg" class=" col-lg-4 col-md-6" data-sub-html="<h3>TEACHER NAME - SUBJECT</h3>">
-                    <img src="./images/gallery/staff/IMG_20240304_133227.jpg"  class="img-fluid shadow-sm"/>
-                </a>
-                
-
-                
-                 <a href="./images/gallery/staff/InShot_20240331_234258052.jpg" class=" col-lg-4 col-md-6" data-sub-html="<h3>TEACHER NAME - SUBJECT</h3>">
-                    <img src="./images/gallery/staff/InShot_20240331_234258052.jpg"  class="img-fluid shadow-sm"/>
-                 </a>
-                 
-                
-              
-            <div class="row">
-                <div class="col-12 text-center mb-lg-5 mb-4">
-                    <h2 class="color-secondary">RESULT 2024</h2>
-                </div>
-      
-
-                <a href="./images/galle1711590684651/1711590684651_IMG_20240326_110234.jpg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/1711590684651_IMG_20240326_110234.jpg"  class="img-fluid shadow-sm h-100 object-fit-cover"/>
-                </a>
-
-                 <a href="./images/galle1711590684651/IMG-20240326-WA0000(1).jpg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/IMG-20240326-WA0000(1).jpg"  class="img-fluid shadow-sm h-100 object-fit-cover"/>
-                </a>
-
-                 <a href="./images/galle1711590684651/IMG-20240326-WA0002.jpg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/IMG-20240326-WA0002.jpg"  class="img-fluid shadow-sm h-100 object-fit-cover"/>
-                </a>
-              
-                 <a href="./images/galle1711590684651/IMG-20240326-WA0003.jpg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/IMG-20240326-WA0003.jpg"  class="img-fluid shadow-sm h-100 object-fit-cover"/>
-                </a>
-         
-            <div class="row">
-                <div class="col-12 text-center mb-lg-5 mb-4">
-                    <h2 class="color-secondary">BAISHAKHI 2024</h2>
-                </div>
-                
-                <a href="./images/gallery/IMG-20240413-WA0048.jpg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/IMG-20240413-WA0048.jpg"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-                   
-                  <a href="./images/gallery/IMG-20240413-WA0041.jpg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/IMG-20240413-WA0041.jpg"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-                
-                <a href="./images/gallery/IMG-20240413-WA0040.jpg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/IMG-20240413-WA0040.jpg"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-                
-                <a href="./images/gallery/IMG-20240413-WA0039.jpg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/IMG-20240413-WA0039.jpg"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-                
-                <a href="./images/gallery/IMG-20240413-WA0037.jpgIMG-20240413-WA0037.jpg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/IMG-20240413-WA0037.jpg"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-                
-                <a href="./images/gallery/IMG-20240413-WA0036.jpg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/IMG-20240413-WA0036.jpg"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-                
-                <a href="./images/gallery/IMG-20240413-WA0035.jpg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/IMG-20240413-WA0035.jpg"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-                
-                <a href="./images/gallery/IMG-20240413-WA0032.jpg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/IMG-20240413-WA0032.jpg"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-              
-              <a href="./images/gallery/IMG-20240414-WA0005.jpg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/IMG-20240414-WA0005.jpg"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-                
-                <a href="./images/gallery/IMG-20240414-WA0009.jpgIMG-20240414-WA0006.jpgIMG-20240414-WA0006.jpg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/IMG-20240414-WA0006.jpg"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-                
-                <a href="./images/gallery/IMG-20240414-WA0008.jpg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/IMG-20240414-WA0008.jpg"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-                
-                
-                <a href="./images/gallery/IMG-20240414-WA0009.jpg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/IMG-20240414-WA0009.jpg"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-                
-                <a href="./images/gallery/IMG-20240414-WA0018.jpg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/IMG-20240414-WA0018.jpg"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-                
-                <a href="./images/gallery/IMG-20240414-WA0016.jpg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/IMG-20240414-WA0016.jpg"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-                
-                <a href="./images/gallery/IMG-20240414-WA0014.jpg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/IMG-20240414-WA0014.jpg"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-                
-                <a href="./images/gallery/IMG-20240414-WA0013.jpg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/IMG-20240414-WA0013.jpg"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-                
-                
-         
-              
-            <div class="row">
-                <div class="col-12 text-center mb-lg-5 mb-4">
-                    <h2 class="color-secondary"> CURRICULAR ACTIVITES</h2>
-                </div>
-                
-            </div>        
-            <div id="animated-thumbnails-gallery-1" class="row mb-5 row-gap-4">
-                
-                <a href="./images/galle1711590684651_IMG_20240326_110234.jpgry/extra-curri-2.JPG" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/extra-curri-2.JPG"  class="img-fluid shadow-sm h-100 object-fit-cover"/>
-                </a>
-                
-                <a href="./images/gallery/computer-lab.JPG" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/computer-lab.JPG"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-               
-                <a href="./images/gallery/computer-lab-4.JPG" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/computer-lab-4.JPG"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-               
-                <a href="./images/gallery/extra-1.jpeg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/extra-1.jpeg"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-                <a href="./images/gallery/extra-13.jpeg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/extra-13.jpeg"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-                <a href="./images/gallery/extra-14.jpeg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/extra-14.jpeg"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-                <a href="./images/gallery/childerns.jpeg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/childerns.jpeg"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-                <a href="./images/gallery/class-room-funday.jpeg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/class-room-funday.jpeg"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-                <a href="./images/gallery/class-room.jpeg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/class-room.jpeg"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-            
-                <a href="./images/gallery/clay-day.jpeg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/clay-day.jpeg"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-                
-             
-                <a href="./images/gallery/krishna-janamasthmi-2.jpeg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/krishna-janamasthmi-2.jpeg"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-                <a href="./images/gallery/prayer.jpeg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/prayer.jpeg"  class="img-fluid shadow-sm  h-100 object-fit-cover" />
-                </a>
-                <a href="./images/gallery/prayer-1.jpeg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/prayer-1.jpeg"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-                <a href="./images/gallery/yoga.jpeg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/yoga.jpeg"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-              
-             
-            </div>
-            <div class="row">
-                <div class="col-12 text-center mb-lg-5 mb-4">
-                    <h2 class="color-secondary">EDUCATION TOUR 2023</h2>
-                </div>
-                
-                 </div>        
-            <div id="animated-thumbnails-gallery-1" class="row mb-5 row-gap-4">
-            
-                <a href="./images/gallery/IMG20231223081525.jpg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/IMG20231223081525.jpg"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-<a href="./images/gallery/IMG20231223113358_BURST008.jpg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/IMG20231223113358_BURST008.jpg"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-<a href="./images/gallery/IMG20231223143245.jpg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/IMG20231223143245.jpg"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-                <a href="./images/gallery/IMG20231223143340.jpg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/IMG20231223143340.jpg"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-<a href="./images/gallery/IMG20231223144456.jpg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/IMG20231223144456.jpg"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-                <a href="./images/gallery/IMG20231223145434.jpg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/IMG20231223145434.jpg"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-<a href="./images/gallery/IMG20231223151041.jpg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/IMG20231223151041.jpg"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-                <a href="./images/gallery/IMG20231223151226.jpg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/IMG20231223151226.jpg"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-                <a href="./images/gallery/IMG20231223151332.jpg" class="col-md-3" data-sub-html="<h3>Krishna Gurukul School Suinty</h3><p>School Front View</p>">
-                    <img src="./images/gallery/IMG20231223151332.jpg"  class="img-fluid shadow-sm h-100 object-fit-cover" />
-                </a>
-                
-            
-            
-              
-               
-        <button formsappId="65d421de3cd878f0d631ce7d"></button>
-<script src="https://forms.app/static/embed.js" type="text/javascript" async defer onload="new formsapp('65d421de3cd878f0d631ce7d', 'popup', {'overlay':'rgba(45,45,45,0.5)','button':{'color':'#FF0000','text':'Contact us Click here!'},'width':'800px','height':'600px','openingAnimation':{'entrance':'animate__fadeIn','exit':'animate__fadeOut'}});"></script>
-        </div>
-        
-    
-    
-    <footer class="color-primary-bg text-white text-center py-3">
-        <div class="container">
-            &copy; 2023 Krishna Gurukul School. All rights reserved.
         </div>
     </footer>
+
+    <!-- JavaScript -->
+    <script type="module" src="js/main.js"></script>
+    
+    <!-- Gallery-specific JavaScript -->
+    <script>
+        // Gallery functionality
+        class GalleryManager {
+            constructor() {
+                this.galleryContainer = document.getElementById('gallery-container');
+                this.filterButtons = document.querySelectorAll('.filter-btn');
+                this.currentFilter = 'all';
+                this.galleryData = [];
+                
+                this.init();
+            }
+            
+            async init() {
+                await this.loadGalleryData();
+                this.setupFilterButtons();
+                this.renderGallery();
+            }
+            
+            async loadGalleryData() {
+                try {
+                    const response = await fetch('data/gallery.json');
+                    const data = await response.json();
+                    this.galleryData = data.gallery;
+                    
+                    // Add more images from the existing gallery folder
+                    const additionalImages = [
+                        { id: 9, url: "images/gallery/School-Building-2.JPG", title: "School Building", caption: "Another view of our modern school building", category: "campus" },
+                        { id: 10, url: "images/gallery/computer-lab-1.JPG", title: "Computer Lab", caption: "Advanced computer laboratory", category: "facilities" },
+                        { id: 11, url: "images/gallery/extra-1.jpeg", title: "Extra Activities", caption: "Students participating in extra-curricular activities", category: "activities" },
+                        { id: 12, url: "images/gallery/school-bus.jpeg", title: "School Transport", caption: "Safe and reliable school transportation", category: "facilities" },
+                        { id: 13, url: "images/gallery/prayer-1.jpeg", title: "Morning Assembly", caption: "Daily morning prayer and assembly", category: "activities" },
+                        { id: 14, url: "images/gallery/Principal-front.JPG", title: "Principal Office", caption: "Principal's office and meeting area", category: "campus" },
+                        { id: 15, url: "images/gallery/clay-day.jpeg", title: "Art & Craft", caption: "Creative clay modeling activities", category: "activities" },
+                        { id: 16, url: "images/gallery/extra-11.jpeg", title: "Cultural Events", caption: "Student performances and cultural programs", category: "activities" }
+                    ];
+                    
+                    this.galleryData = [...this.galleryData, ...additionalImages];
+                } catch (error) {
+                    console.error('Error loading gallery data:', error);
+                    this.showError();
+                }
+            }
+            
+            setupFilterButtons() {
+                this.filterButtons.forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        // Update active state
+                        this.filterButtons.forEach(btn => {
+                            btn.classList.remove('active');
+                            btn.style.background = 'transparent';
+                            btn.style.color = 'var(--secondary-teal)';
+                        });
+                        
+                        button.classList.add('active');
+                        button.style.background = 'var(--secondary-teal)';
+                        button.style.color = 'white';
+                        
+                        // Filter gallery
+                        this.currentFilter = button.dataset.filter;
+                        this.renderGallery();
+                    });
+                });
+            }
+            
+            renderGallery() {
+                const filteredData = this.currentFilter === 'all' 
+                    ? this.galleryData 
+                    : this.galleryData.filter(item => item.category === this.currentFilter);
+                
+                this.galleryContainer.innerHTML = filteredData.map(item => `
+                    <div class="gallery-item" data-category="${item.category}">
+                        <img src="${item.url}" alt="${item.title}" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div>
+                                <h4>${item.title}</h4>
+                                <p>${item.caption}</p>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+                
+                // Add click handlers for lightbox
+                this.setupLightbox();
+            }
+            
+            setupLightbox() {
+                const galleryItems = document.querySelectorAll('.gallery-item');
+                galleryItems.forEach(item => {
+                    item.addEventListener('click', () => {
+                        const img = item.querySelector('img');
+                        const title = item.querySelector('h4')?.textContent || '';
+                        const caption = item.querySelector('p')?.textContent || '';
+                        
+                        this.openLightbox(img.src, title, caption);
+                    });
+                });
+            }
+            
+            openLightbox(imageSrc, title, caption) {
+                const lightbox = document.createElement('div');
+                lightbox.className = 'lightbox-overlay';
+                lightbox.innerHTML = `
+                    <div class="lightbox-content">
+                        <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
+                        <img src="${imageSrc}" alt="${title}">
+                        <div class="lightbox-info">
+                            <h3>${title}</h3>
+                            <p>${caption}</p>
+                        </div>
+                    </div>
+                `;
+                
+                lightbox.style.cssText = `
+                    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                    background: rgba(0, 31, 63, 0.9); display: flex; align-items: center;
+                    justify-content: center; z-index: 10000; padding: 2rem;
+                `;
+                
+                const content = lightbox.querySelector('.lightbox-content');
+                content.style.cssText = `
+                    position: relative; max-width: 90%; max-height: 90%;
+                    background: white; border-radius: 15px; overflow: hidden;
+                `;
+                
+                const closeBtn = lightbox.querySelector('.lightbox-close');
+                closeBtn.style.cssText = `
+                    position: absolute; top: 1rem; right: 1rem; background: var(--primary-navy);
+                    color: white; border: none; width: 40px; height: 40px; border-radius: 50%;
+                    font-size: 1.5rem; cursor: pointer; z-index: 1;
+                `;
+                
+                const img = lightbox.querySelector('img');
+                img.style.cssText = `width: 100%; height: auto; display: block;`;
+                
+                const info = lightbox.querySelector('.lightbox-info');
+                info.style.cssText = `padding: 1.5rem; text-align: center;`;
+                
+                document.body.appendChild(lightbox);
+                
+                closeBtn.addEventListener('click', () => this.closeLightbox(lightbox));
+                lightbox.addEventListener('click', (e) => {
+                    if (e.target === lightbox) this.closeLightbox(lightbox);
+                });
+                
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') this.closeLightbox(lightbox);
+                });
+            }
+            
+            closeLightbox(lightbox) {
+                lightbox.style.opacity = '0';
+                setTimeout(() => {
+                    if (lightbox && lightbox.parentNode) {
+                        lightbox.parentNode.removeChild(lightbox);
+                    }
+                }, 300);
+            }
+            
+            showError() {
+                this.galleryContainer.innerHTML = `
+                    <div class="text-center" style="grid-column: 1 / -1;">
+                        <i class="fas fa-exclamation-triangle text-gold" style="font-size: 2rem;"></i>
+                        <p style="margin-top: 1rem;">Unable to load gallery images. Please try again later.</p>
+                    </div>
+                `;
+            }
+        }
+        
+        // Initialize gallery when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new GalleryManager();
+        });
+    </script>
+    
+    <!-- Google Translate -->
     <script type="text/javascript">// <![CDATA[
         function googleTranslateElementInit() {
         new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
         }
         // ]]></script>
         <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" type="text/javascript"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
-        <script>
-            lightGallery(document.getElementById('animated-thumbnails-gallery'), {
-                thumbnail: true,});
-          </script>
-          <script>
-            lightGallery(document.getElementById('animated-thumbnails-gallery-1'), {
-                thumbnail: true,
-            });
-          </script>
-          <script>
-            lightGallery(document.getElementById('animated-thumbnails-gallery-staff'), {
-                thumbnail: true,
-            });
-          </script>
 </body>
 </html>

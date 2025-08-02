@@ -1,0 +1,34 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Krishna Gurukul School Website – Cursor IDE Rules
+
+# Project Context
+Project: Krishna Gurukul School Website Revamp
+Stack: HTML5, CSS3, JavaScript (ES6), basic PHP (admin), JSON (data), Hostinger basic hosting
+
+# General Coding Principles
+- Use semantic, accessible HTML5 tags (header, nav, main, section, etc.)
+- Write CSS with mobile-first breakpoints using Flexbox/Grid; minimize use of external CSS frameworks except utility classes (e.g., Uikit or custom)
+- Use Vanilla JS only – no frameworks like React or Vue
+- All admin/backend logic in PHP 7.x, keep it minimal and secure
+
+# Files & Structure
+- Follow this directory structure:
+/css/      – CSS files
+/js/       – JavaScript files
+/images/   – Image assets (school, events, etc.)
+/php/      – PHP scripts (admin only)
+/data/     – gallery.json
+# Security & Performance
+- All file uploads must be sanitized, with validation for type/size in PHP
+- Admin endpoint uses HTTP Basic Auth, do NOT expose credentials in the repo
+- Use HTTPS URLs for all resources
+- Optimize all images to be <200KB, width ≤ 1200px
+- Lazy-load images on gallery pages
+
+# Accessibility & SEO
+- Provide descriptive alt text for every image
+- Use high-contrast colors for text/background (school palette: deep

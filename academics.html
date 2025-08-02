@@ -1,158 +1,346 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <title>Academics | Krishna Gurukul School</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Academic Programs at Krishna Gurukul School - Comprehensive education from Pre-Primary to High School with modern curriculum and facilities.">
+    <meta name="keywords" content="Krishna Gurukul School, academics, curriculum, education programs, PSEB">
+    <meta name="author" content="Krishna Gurukul School">
+    
+    <title>Academics - Krishna Gurukul School</title>
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/logo-180.png" type="image/x-icon">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
-    <header>
-        <div class="color-secondary-bg py-1">
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <!-- Logo -->
+                <div class="logo">
+                    <img src="images/logo-250.png" alt="Krishna Gurukul School Logo">
+                </div>
+                
+                <!-- Navigation Menu -->
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about-us.html" class="nav-link">About Us</a></li>
+                    <li><a href="academics.html" class="nav-link active">Academics</a></li>
+                    <li><a href="admission.html" class="nav-link">Admissions</a></li>
+                    <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                
+                <!-- Language Selector -->
+                <div class="language-selector">
+                    <button class="language-btn" aria-label="Language Options">
+                        <i class="fas fa-globe"></i> Language
+                    </button>
+                    <div id="google_translate_element" style="display: none;"></div>
+                </div>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main style="margin-top: 100px;">
+        <!-- Page Hero Section -->
+        <section class="section bg-gray">
             <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <div id="google_translate_element"></div>
+                <div class="text-center">
+                    <h1 class="text-navy">Academic Excellence</h1>
+                    <p style="font-size: 1.2rem; margin-top: 1rem;">Comprehensive education programs designed to nurture tomorrow's leaders</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Introduction Section -->
+        <section class="section">
+            <div class="container">
+                <div class="text-center mb-4">
+                    <h2 class="text-navy">Our Academic Philosophy</h2>
+                    <p style="max-width: 800px; margin: 0 auto;">At <strong>Krishna Gurukul School</strong>, we are committed to providing a high-quality education that equips students with the knowledge and skills they need for success in an ever-evolving world.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Academic Programs Section -->
+        <section class="section section-alt">
+            <div class="container">
+                <div class="text-center mb-4">
+                    <h2 class="text-navy">Academic Programs</h2>
+                    <p>Comprehensive education from early childhood to secondary level</p>
+                </div>
+                
+                <div class="features">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-baby"></i>
+                        </div>
+                        <h3>Pre-Primary</h3>
+                        <p><strong>Nursery - UKG</strong></p>
+                        <p>Foundation years focusing on play-based learning, social skills development, and early literacy and numeracy concepts.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-child"></i>
+                        </div>
+                        <h3>Primary Education</h3>
+                        <p><strong>Grades K-5</strong></p>
+                        <p>Building strong academic foundations with emphasis on reading, writing, mathematics, and creative expression.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <h3>Middle School</h3>
+                        <p><strong>Grades 6-8</strong></p>
+                        <p>Developing critical thinking skills, subject specialization, and preparing students for advanced learning.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>High School</h3>
+                        <p><strong>Grades 9-10</strong></p>
+                        <p>Board exam preparation with comprehensive curriculum following PSEB guidelines and career guidance.</p>
                     </div>
                 </div>
             </div>
-        </div>
-       
-        <nav class="navbar navbar-expand-lg bg-light">
+        </section>
+
+        <!-- Curriculum Section -->
+        <section class="section">
             <div class="container">
-                    <a class="navbar-brand" href="index.html"><img src="./images/20240217_110626.png" width="180" height="144" alt="Krishna Gurukul School"></a>          <button formsappId="65d417fd3cd878614f31c87c"></button>
-<script src="https://forms.app/static/embed.js" type="text/javascript" async defer onload="new formsapp('65d417fd3cd878614f31c87c', 'popup', {'overlay':'rgba(45,45,45,0.5)','button':{'color':'#FF0000','text':'Admission Query '},'width':'800px','height':'600px','openingAnimation':{'entrance':'animate__fadeIn','exit':'animate__fadeOut'}});"></script>         
-                    <div>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                            aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav">
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle color-secondary" href="index.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                      Home
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                      <li><a class="dropdown-item" href="about-us.html">About Us</a></li>
-                                      <li><a class="dropdown-item" href="about-us.html#vision-mision">Vision & Mision</a></li>
-                                      <li><a class="dropdown-item" href="about-us.html#principal-desk">Principal Desk</a></li>
-                                    </ul>
-                                  </li>
-                                <li class="nav-item">
-                                    <a class="nav-link color-secondary" href="admission.html">Admission</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link color-secondary" href="academics.html">Academics</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link color-secondary" href="gallery.html">Gallery</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link color-secondary" href="https://www.youtube.com/@krishnagurukul5085" target="_blank">Media</a>
-                                </li>
+                <div class="welcome">
+                    <div class="welcome-content">
+                        <h2 class="text-navy">Our Curriculum</h2>
+                        <p>Our curriculum is designed to foster critical thinking, creativity, and character development. We follow a holistic approach to education, blending traditional learning with innovative teaching methods.</p>
+                        
+                        <div style="background: var(--neutral-gray); padding: 2rem; border-radius: 15px; margin-top: 2rem;">
+                            <h4 class="text-teal">Key Curriculum Features:</h4>
+                            <ul style="margin-top: 1rem;">
+                                <li><i class="fas fa-check-circle text-teal"></i> PSEB-aligned syllabus</li>
+                                <li><i class="fas fa-check-circle text-teal"></i> Bilingual instruction (English-Hindi)</li>
+                                <li><i class="fas fa-check-circle text-teal"></i> Activity-based learning</li>
+                                <li><i class="fas fa-check-circle text-teal"></i> Value-based education</li>
+                                <li><i class="fas fa-check-circle text-teal"></i> Regular assessments and feedback</li>
                             </ul>
                         </div>
+                        
+                        <p style="margin-top: 2rem;">In addition to our strong academic offerings, we encourage students to participate in a variety of extracurricular activities, sports, and enrichment programs. These activities promote well-rounded development and provide opportunities for students to pursue their passions.</p>
                     </div>
-
-                </div>
-
-            </div>
-        </nav>
-    </header>
-    <section class="inner-hero py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <h2 class="text-white">Academics</h2>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html" class="text-white">Home</a></li>
-                            <li class="breadcrumb-item color-yellow" aria-current="page">Academics</li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>        
-    </section>
-    <section class="py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center mb-lg-5 mb-4">
-                    <h2 class="color-secondary">Academics</h2>
-    
-                </div>
-                <div class="col-md-12">
-                    <p>At <strong>KRISHNA GURUKUL SCHOOL</strong>, we are committed to providing a high-quality education that equips students with the knowledge and skills they need for success. Explore our academic offerings and resources below:</p>
-                    <h5>Academic Programs</h5>
-                    <p>Pre- Primary (nursery - UKG)<br>
-                       Primary Education (Grades K-5)<br>
-                        Middle School (Grades 6-8)<br>
-                        High School (Grades 9-10)</p>
-                </div>
-                <div class="col-md-6">
                     
+                    <div>
+                        <img src="images/gallery/class-room.jpeg" alt="Modern Classroom" class="principal-image">
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <h3 class="color-secondary">Curriculum</h3>
-                </div>
-                <div class="col-md-6">
-                    <p>Our curriculum is designed to foster critical thinking, creativity, and character development. We follow a holistic approach to education, blending traditional learning with innovative teaching methods.Extracurricular Activities In addition to our strong academic offerings, we encourage students to participate in a variety of extracurricular activities, house, sports, and enrichment programs. These activities promote well-rounded development and provide opportunities for students to pursue their passions</p>
-                </div>
-                <div class="col-md-6">
+        </section>
 
+        <!-- Faculty Section -->
+        <section class="section section-alt">
+            <div class="container">
+                <div class="text-center mb-4">
+                    <h2 class="text-navy">Our Faculty</h2>
+                    <p>Dedicated educators committed to student success</p>
+                </div>
+                
+                <div class="welcome">
+                    <div>
+                        <img src="images/gallery/staff/InShot_20240331_234258052.jpg" alt="Our Teachers" class="principal-image">
+                    </div>
+                    
+                    <div class="welcome-content">
+                        <h3 class="text-teal">Experienced & Qualified Teachers</h3>
+                        <p>Our dedicated and experienced teaching staff is committed to nurturing the intellectual and personal growth of our students. Our faculty members bring years of experience and expertise in their respective fields.</p>
+                        
+                        <div style="background: var(--white); padding: 2rem; border-radius: 15px; border-left: 4px solid var(--secondary-teal); margin-top: 2rem;">
+                            <h4 class="text-teal">Our Teachers Provide:</h4>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;">
+                                <div>
+                                    <p><i class="fas fa-star text-gold"></i> Personalized attention</p>
+                                    <p><i class="fas fa-star text-gold"></i> Innovative teaching methods</p>
+                                </div>
+                                <div>
+                                    <p><i class="fas fa-star text-gold"></i> Regular parent communication</p>
+                                    <p><i class="fas fa-star text-gold"></i> Student mentorship</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <h3 class="color-secondary">Teachers and Faculty</h3>
-                    <p>Our dedicated and experienced teaching staff is committed to nurturing the intellectual and personal growth of our students. Meet our faculty members and learn about their qualifications and areas of expertise</p>
+        </section>
+
+        <!-- Facilities Section -->
+        <section class="section">
+            <div class="container">
+                <div class="text-center mb-4">
+                    <h2 class="text-navy">Academic Facilities</h2>
+                    <p>Modern infrastructure supporting quality education</p>
+                </div>
+                
+                <div class="features">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3>Library & Resources</h3>
+                        <p>Well-equipped library with wide selection of books, digital resources, and online learning platforms to support academic endeavors.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-laptop"></i>
+                        </div>
+                        <h3>Computer Lab</h3>
+                        <p>State-of-the-art computer laboratory with modern systems and high-speed internet for digital literacy and technology education.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-flask"></i>
+                        </div>
+                        <h3>Science Labs</h3>
+                        <p>Fully equipped science laboratories for physics, chemistry, and biology with modern equipment for hands-on learning.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chalkboard"></i>
+                        </div>
+                        <h3>Smart Classrooms</h3>
+                        <p>Modern classrooms with smart boards, projectors, and audio-visual equipment for interactive and engaging learning experiences.</p>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <h3 class="color-secondary">Library and Resources</h3>
-                    <p>Our school library is well-equipped with a wide selection of books and digital resources. Students also have access to online learning platforms and databases to support their academic endeavors.</p>
+        </section>
+
+        <!-- Educational Philosophy Section -->
+        <section class="section section-alt">
+            <div class="container">
+                <div class="text-center mb-4">
+                    <h2 class="text-navy">Educational Philosophy</h2>
+                </div>
+                
+                <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                    <p style="font-size: 1.1rem; line-height: 1.8;">At <strong>Krishna Gurukul School</strong>, we believe in nurturing curious minds and empowering students to become lifelong learners. Our educational philosophy is based on fostering critical thinking, creativity, and personal responsibility.</p>
+                    
+                    <div style="background: var(--white); padding: 3rem; border-radius: 15px; margin-top: 3rem; border-left: 4px solid var(--accent-gold);">
+                        <h3 class="text-gold">Our Core Beliefs</h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; text-align: left;">
+                            <div>
+                                <h4 class="text-navy">Student-Centered Learning</h4>
+                                <p>Every child learns differently, and we adapt our teaching methods to meet individual needs.</p>
+                            </div>
+                            <div>
+                                <h4 class="text-navy">Character Development</h4>
+                                <p>We emphasize values, ethics, and moral development alongside academic excellence.</p>
+                            </div>
+                            <div>
+                                <h4 class="text-navy">Collaborative Partnership</h4>
+                                <p>Strong parent-teacher communication ensures continuous support for student growth.</p>
+                            </div>
+                            <div>
+                                <h4 class="text-navy">Future Readiness</h4>
+                                <p>Preparing students with 21st-century skills for success in a dynamic world.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <h3 class="color-secondary">Educational Philosophy</h3>
-                    <p>At <strong>KRISHNA GURUKUL SCHOOL</strong>, we believe in nurturing curious minds and empowering students to become lifelong learners. Our educational philosophy is based on fostering critical thinking, creativity, and personal responsibility.</p>
-                </div>
+        </section>
+
+        <!-- Call to Action Section -->
+        <section class="cta">
+            <div class="container">
+                <h2>Ready to Begin Your Academic Journey?</h2>
+                <p>Join Krishna Gurukul School and experience excellence in education</p>
+                <a href="admission.html" class="cta-btn">Apply Now</a>
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <h3 class="color-secondary">Parent-Teacher</h3>
-                    <p>We encourage open communication between parents and teachers. Learn about the ways in which parents can engage with teachers and stay informed about their child's progress.</p>
-                </div>
-            </div>
-        </div>
-<button formsappId="65d421de3cd878f0d631ce7d"></button>
-<script src="https://forms.app/static/embed.js" type="text/javascript" async defer onload="new formsapp('65d421de3cd878f0d631ce7d', 'popup', {'overlay':'rgba(45,45,45,0.5)','button':{'color':'#FF0000','text':'Contact us Click here!'},'width':'800px','height':'600px','openingAnimation':{'entrance':'animate__fadeIn','exit':'animate__fadeOut'}});"></script>
-    </section>
-    <footer class="color-primary-bg text-white text-center py-3">
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
         <div class="container">
-            &copy; 2023 Krishna Gurukul School. All rights reserved.
+            <div class="footer-content">
+                <!-- School Info -->
+                <div class="footer-section">
+                    <img src="images/logo-250.png" alt="Krishna Gurukul School" style="height: 60px; margin-bottom: 1rem;">
+                    <p>Inspiring Excellence, Nurturing Tradition. A premier educational institution dedicated to providing quality education with traditional values.</p>
+                    <div class="social-icons">
+                        <a href="https://www.youtube.com/@krishnagurukul5085" target="_blank" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://www.instagram.com/krishnagurukulschool2001/" target="_blank" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" aria-label="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="academics.html">Academics</a></li>
+                        <li><a href="admission.html">Admissions</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p><i class="fas fa-map-marker-alt text-teal"></i> Krishna Gurukul School<br>
+                       Complete Address<br>
+                       City, State, PIN</p>
+                    <p><i class="fas fa-phone text-teal"></i> +91-XXXXX-XXXXX</p>
+                    <p><i class="fas fa-envelope text-teal"></i> info@krishnagurukulschool.in</p>
+                </div>
+                
+                <!-- School Hours -->
+                <div class="footer-section">
+                    <h3>School Hours</h3>
+                    <p><strong>Monday - Friday:</strong><br>8:00 AM - 3:00 PM</p>
+                    <p><strong>Saturday:</strong><br>8:00 AM - 12:00 PM</p>
+                    <p><strong>Sunday:</strong><br>Closed</p>
+                    <p style="margin-top: 1rem;"><strong>Office Hours:</strong><br>9:00 AM - 4:00 PM</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Krishna Gurukul School. All Rights Reserved. | Designed with ❤️ for Excellence in Education</p>
+            </div>
         </div>
     </footer>
-    <script type="text/javascript">// <![CDATA[
-        function googleTranslateElementInit() {
-        new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
-        }
-        // ]]></script>
-        <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" type="text/javascript"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
-</body>
 
+    <!-- JavaScript -->
+    <script type="module" src="js/main.js"></script>
+    
+    <!-- Google Translate -->
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" type="text/javascript"></script>
+</body>
 </html>
