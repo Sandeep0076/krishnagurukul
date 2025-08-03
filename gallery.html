@@ -248,21 +248,7 @@
                 try {
                     const response = await fetch('data/gallery.json');
                     const data = await response.json();
-                    this.galleryData = data.gallery;
-                    
-                    // Add more images from the existing gallery folder
-                    const additionalImages = [
-                        { id: 9, url: "images/gallery/School-Building-2.JPG", title: "School Building", caption: "Another view of our modern school building", category: "campus" },
-                        { id: 10, url: "images/gallery/computer-lab-1.JPG", title: "Computer Lab", caption: "Advanced computer laboratory", category: "facilities" },
-                        { id: 11, url: "images/gallery/extra-1.jpeg", title: "Extra Activities", caption: "Students participating in extra-curricular activities", category: "activities" },
-                        { id: 12, url: "images/gallery/school-bus.jpeg", title: "School Transport", caption: "Safe and reliable school transportation", category: "facilities" },
-                        { id: 13, url: "images/gallery/prayer-1.jpeg", title: "Morning Assembly", caption: "Daily morning prayer and assembly", category: "activities" },
-                        { id: 14, url: "images/gallery/Principal-front.JPG", title: "Principal Office", caption: "Principal's office and meeting area", category: "campus" },
-                        { id: 15, url: "images/gallery/clay-day.jpeg", title: "Art & Craft", caption: "Creative clay modeling activities", category: "activities" },
-                        { id: 16, url: "images/gallery/extra-11.jpeg", title: "Cultural Events", caption: "Student performances and cultural programs", category: "activities" }
-                    ];
-                    
-                    this.galleryData = [...this.galleryData, ...additionalImages];
+                    this.galleryData = data.gallery || [];
                 } catch (error) {
                     console.error('Error loading gallery data:', error);
                     this.showError();

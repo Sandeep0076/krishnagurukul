@@ -1,0 +1,27 @@
+# Protect admin directory
+Options -Indexes
+
+# Prevent direct access to PHP files except through web interface
+<Files "*.php">
+    Order Allow,Deny
+    Allow from all
+</Files>
+
+# Security headers
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options nosniff
+    Header always set X-Frame-Options DENY
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Prevent access to sensitive files
+<Files "*.log">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+<Files ".htaccess">
+    Order Allow,Deny
+    Deny from all
+</Files> 
