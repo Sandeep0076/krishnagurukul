@@ -76,22 +76,11 @@
                 </div>
                 
                 <!-- Category Filter Buttons -->
-                <div style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap;">
+                <div id="filter-buttons" style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap;">
                     <button class="filter-btn active" data-filter="all" style="padding: 0.8rem 2rem; border: 2px solid var(--secondary-teal); background: var(--secondary-teal); color: white; border-radius: 25px; cursor: pointer; font-weight: 600; transition: var(--transition-smooth);">
                         All Photos
                     </button>
-                    <button class="filter-btn" data-filter="campus" style="padding: 0.8rem 2rem; border: 2px solid var(--secondary-teal); background: transparent; color: var(--secondary-teal); border-radius: 25px; cursor: pointer; font-weight: 600; transition: var(--transition-smooth);">
-                        Campus
-                    </button>
-                    <button class="filter-btn" data-filter="facilities" style="padding: 0.8rem 2rem; border: 2px solid var(--secondary-teal); background: transparent; color: var(--secondary-teal); border-radius: 25px; cursor: pointer; font-weight: 600; transition: var(--transition-smooth);">
-                        Facilities
-                    </button>
-                    <button class="filter-btn" data-filter="activities" style="padding: 0.8rem 2rem; border: 2px solid var(--secondary-teal); background: transparent; color: var(--secondary-teal); border-radius: 25px; cursor: pointer; font-weight: 600; transition: var(--transition-smooth);">
-                        Activities
-                    </button>
-                    <button class="filter-btn" data-filter="students" style="padding: 0.8rem 2rem; border: 2px solid var(--secondary-teal); background: transparent; color: var(--secondary-teal); border-radius: 25px; cursor: pointer; font-weight: 600; transition: var(--transition-smooth);">
-                        Students
-                    </button>
+                    <!-- Category buttons will be loaded dynamically -->
                 </div>
             </div>
         </section>
@@ -239,9 +228,21 @@
             }
             
             async init() {
+                await this.loadCategories();
                 await this.loadGalleryData();
                 this.setupFilterButtons();
                 this.renderGallery();
+            }
+            
+            async loadCategories() {
+                try {
+                    const response = await fetch('data/categories.json');
+                    const data = await response.json();
+                    this.categories = data.categories || [];
+                } catch (error) {
+                    console.error('Error loading categories:', error);
+                    this.categories = [];
+                }
             }
             
             async loadGalleryData() {
@@ -256,6 +257,22 @@
             }
             
             setupFilterButtons() {
+                // Create category filter buttons dynamically
+                const filterContainer = document.getElementById('filter-buttons');
+                
+                // Add category buttons
+                this.categories.forEach(category => {
+                    const button = document.createElement('button');
+                    button.className = 'filter-btn';
+                    button.dataset.filter = category.id;
+                    button.style.cssText = 'padding: 0.8rem 2rem; border: 2px solid var(--secondary-teal); background: transparent; color: var(--secondary-teal); border-radius: 25px; cursor: pointer; font-weight: 600; transition: var(--transition-smooth);';
+                    button.textContent = category.name;
+                    filterContainer.appendChild(button);
+                });
+                
+                // Get all filter buttons (including the dynamically added ones)
+                this.filterButtons = document.querySelectorAll('.filter-btn');
+                
                 this.filterButtons.forEach(button => {
                     button.addEventListener('click', (e) => {
                         // Update active state

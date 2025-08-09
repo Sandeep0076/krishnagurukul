@@ -32,6 +32,28 @@ $title = trim($_POST['title']);
 $caption = trim($_POST['caption']);
 $category = trim($_POST['category']);
 
+// Validate category exists
+$categories_file = '../data/categories.json';
+if (file_exists($categories_file)) {
+    $categories_content = file_get_contents($categories_file);
+    $categories_data = json_decode($categories_content, true);
+    $valid_category = false;
+    
+    if (isset($categories_data['categories'])) {
+        foreach ($categories_data['categories'] as $cat) {
+            if ($cat['id'] === $category) {
+                $valid_category = true;
+                break;
+            }
+        }
+    }
+    
+    if (!$valid_category) {
+        echo json_encode(['success' => false, 'message' => 'Invalid category selected']);
+        exit;
+    }
+}
+
 // Validate file type
 $allowed_types = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp'];
 if (!in_array($file['type'], $allowed_types)) {

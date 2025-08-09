@@ -1,0 +1,29 @@
+{
+    "categories": [
+        {
+            "id": "campus",
+            "name": "Campus",
+            "description": "School campus and buildings"
+        },
+        {
+            "id": "facilities",
+            "name": "Facilities",
+            "description": "School facilities and infrastructure"
+        },
+        {
+            "id": "activities",
+            "name": "Activities",
+            "description": "Student activities and programs"
+        },
+        {
+            "id": "students",
+            "name": "Students",
+            "description": "Student life and events"
+        },
+        {
+            "id": "events",
+            "name": "Events",
+            "description": "Special events and celebrations"
+        }
+    ]
+}
