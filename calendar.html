@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Krishna Gurukul School Calendar - Stay updated with all school events, activities, and important dates.">
+    <meta name="keywords" content="Krishna Gurukul School, calendar, events, school activities, important dates">
+    <meta name="author" content="Krishna Gurukul School">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Krishna Gurukul School Calendar - Upcoming Events">
+    <meta property="og:description" content="Stay updated with all school events, activities, and important dates at Krishna Gurukul School.">
+    <meta property="og:image" content="images/front-school.JPG">
+    <meta property="og:url" content="https://krishnagurukulschool.in/calendar.html">
+    <meta property="og:type" content="website">
+    
+    <title>School Calendar - Krishna Gurukul School</title>
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="images/logo-180.png" type="image/x-icon">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/calendar.css">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <!-- Logo -->
+                <div class="logo">
+                    <img src="images/logo-250.png" alt="Krishna Gurukul School Logo">
+                </div>
+                
+                <!-- Navigation Menu -->
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about-us.html" class="nav-link">About Us</a></li>
+                    <li><a href="academics.html" class="nav-link">Academics</a></li>
+                    <li><a href="admission.html" class="nav-link">Admissions</a></li>
+                    <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                    <li><a href="calendar.html" class="nav-link active">Calendar</a></li>
+                </ul>
+                
+                <!-- Language Selector -->
+                <div class="language-selector">
+                    <button class="language-btn" aria-label="Language Options">
+                        <i class="fas fa-globe"></i> Language
+                    </button>
+                    <div id="google_translate_element" style="display: none;"></div>
+                </div>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>School Calendar</h1>
+                <p>Stay updated with all upcoming events, activities, and important dates at Krishna Gurukul School</p>
+            </div>
+        </section>
+
+        <!-- Calendar Section -->
+        <section class="section">
+            <div class="container">
+                <div class="text-center mb-4">
+                    <h2 class="text-navy">Upcoming Events</h2>
+                    <p>View and sync with our school calendar to never miss an important event</p>
+                </div>
+                
+                <!-- Calendar Integration -->
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <div class="calendar-controls">
+                            <button id="today-btn" class="calendar-btn">
+                                <i class="fas fa-calendar-day"></i> Today
+                            </button>
+                            <div class="calendar-nav">
+                                <button id="prev-month" class="calendar-btn">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <button id="next-month" class="calendar-btn">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                            <h3 id="current-month">August 2025</h3>
+                        </div>
+                        <div class="calendar-actions">
+                            <button id="add-to-google" class="calendar-btn primary">
+                                <i class="fab fa-google"></i> Add to Google Calendar
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Google Calendar Embed -->
+                    <div class="calendar-embed">
+                        <iframe 
+                            id="google-calendar"
+                            src="https://calendar.google.com/calendar/embed?src=YOUR_GOOGLE_CALENDAR_ID&ctz=Asia%2FKolkata&mode=MONTH&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=1&showCalendars=0&showTz=0&height=600"
+                            style="border: 0" 
+                            width="100%" 
+                            height="600" 
+                            frameborder="0" 
+                            scrolling="no">
+                        </iframe>
+                    </div>
+                    
+                    <!-- Calendar Info -->
+                    <div class="calendar-info">
+                        <div class="info-card">
+                            <h4><i class="fas fa-info-circle"></i> Calendar Information</h4>
+                            <p><strong>Events shown in time zone:</strong> (GMT+05:30) India Standard Time - Kolkata</p>
+                            <p>This calendar is synchronized with our Google Calendar. Any updates made to our Google Calendar will automatically appear here.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Events Section -->
+        <section class="section section-alt">
+            <div class="container">
+                <div class="text-center mb-4">
+                    <h2 class="text-navy">Quick View - Upcoming Events</h2>
+                    <p>Key events for the current month</p>
+                </div>
+                
+                <div id="quick-events" class="quick-events-grid">
+                    <!-- Events will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Krishna Gurukul School</h3>
+                    <p>Inspiring Excellence, Nurturing Tradition</p>
+                    <p>Manwal - Siyonti Rd, Siyonti, Punjab 145001, India</p>
+                    <p>Phone: <a href="tel:+919416141994">+91 94161 41994</a></p>
+                    <p>Email: <a href="mailto:info@krishnagurukulschool.in">info@krishnagurukulschool.in</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="academics.html">Academics</a></li>
+                        <li><a href="admission.html">Admissions</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="calendar.html">Calendar</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Krishna Gurukul School. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/calendar-config.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/calendar.js"></script>
+</body>
+</html> 

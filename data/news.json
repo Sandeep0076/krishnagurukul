@@ -1,0 +1,26 @@
+[
+  {
+    "id": 101,
+    "title": "Science Exhibition Showcases Student Innovation",
+    "summary": "Students presented creative models on renewable energy and robotics.",
+    "date": "2025-06-28",
+    "image": "/images/gallery/IMG20231223143340.jpg",
+    "url": "#"
+  },
+  {
+    "id": 102,
+    "title": "Yoga Day Celebrations",
+    "summary": "Morning assembly featured a special yoga session across all classes.",
+    "date": "2025-06-21",
+    "image": "/images/yoga.jpeg",
+    "url": "#"
+  },
+  {
+    "id": 103,
+    "title": "New Computer Lab Inaugurated",
+    "summary": "Upgraded systems to boost digital literacy and coding curriculum.",
+    "date": "2025-05-30",
+    "image": "/images/gallery/computer-lab-4.JPG",
+    "url": "#"
+  }
+] 

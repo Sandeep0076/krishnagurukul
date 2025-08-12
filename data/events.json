@@ -1,0 +1,26 @@
+[
+  {
+    "id": 201,
+    "title": "Founder's Day",
+    "description": "Cultural performances and awards.",
+    "date": "2025-08-15",
+    "time": "09:00",
+    "location": "School Auditorium"
+  },
+  {
+    "id": 202,
+    "title": "Inter-house Sports Meet",
+    "description": "Track and field events for classes I–VIII.",
+    "date": "2025-09-05",
+    "time": "08:30",
+    "location": "Sports Ground"
+  },
+  {
+    "id": 203,
+    "title": "Parent Orientation",
+    "description": "Orientation for new parents and students.",
+    "date": "2025-07-10",
+    "time": "11:00",
+    "location": "AV Room"
+  }
+] 

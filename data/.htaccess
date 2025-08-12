@@ -1,0 +1,14 @@
+# /data/.htaccess
+Options -Indexes
+
+# Ensure JSON is served with correct type and CORS enabled for read-only fetches
+AddType application/json .json
+<IfModule mod_headers.c>
+  Header set Access-Control-Allow-Origin "*"
+  Header set Access-Control-Allow-Methods "GET, OPTIONS"
+</IfModule>
+
+# Deny PHP execution in data directory
+<FilesMatch "\.(php|phps|phtml)$">
+  Require all denied
+</FilesMatch> 

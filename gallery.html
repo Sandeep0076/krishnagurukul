@@ -36,7 +36,7 @@
                     <li><a href="academics.html" class="nav-link">Academics</a></li>
                     <li><a href="admission.html" class="nav-link">Admissions</a></li>
                     <li><a href="gallery.html" class="nav-link active">Gallery</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                    <li><a href="calendar.html" class="nav-link">Calendar</a></li>
                 </ul>
                 
                 <!-- Language Selector -->
@@ -189,9 +189,8 @@
                 <div class="footer-section">
                     <h3>Contact Information</h3>
                     <p><i class="fas fa-map-marker-alt text-teal"></i> Krishna Gurukul School<br>
-                       Complete Address<br>
-                       City, State, PIN</p>
-                    <p><i class="fas fa-phone text-teal"></i> +91-XXXXX-XXXXX</p>
+                       Manwal - Siyonti Rd, Siyonti, Punjab 145001, India</p>
+                    <p><i class="fas fa-phone text-teal"></i> +91-94172-79964</p>
                     <p><i class="fas fa-envelope text-teal"></i> info@krishnagurukulschool.in</p>
                 </div>
                 
@@ -331,84 +330,3 @@
                 const lightbox = document.createElement('div');
                 lightbox.className = 'lightbox-overlay';
                 lightbox.innerHTML = `
-                    <div class="lightbox-content">
-                        <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
-                        <img src="${imageSrc}" alt="${title}">
-                        <div class="lightbox-info">
-                            <h3>${title}</h3>
-                            <p>${caption}</p>
-                        </div>
-                    </div>
-                `;
-                
-                lightbox.style.cssText = `
-                    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-                    background: rgba(0, 31, 63, 0.9); display: flex; align-items: center;
-                    justify-content: center; z-index: 10000; padding: 2rem;
-                `;
-                
-                const content = lightbox.querySelector('.lightbox-content');
-                content.style.cssText = `
-                    position: relative; max-width: 90%; max-height: 90%;
-                    background: white; border-radius: 15px; overflow: hidden;
-                `;
-                
-                const closeBtn = lightbox.querySelector('.lightbox-close');
-                closeBtn.style.cssText = `
-                    position: absolute; top: 1rem; right: 1rem; background: var(--primary-navy);
-                    color: white; border: none; width: 40px; height: 40px; border-radius: 50%;
-                    font-size: 1.5rem; cursor: pointer; z-index: 1;
-                `;
-                
-                const img = lightbox.querySelector('img');
-                img.style.cssText = `width: 100%; height: auto; display: block;`;
-                
-                const info = lightbox.querySelector('.lightbox-info');
-                info.style.cssText = `padding: 1.5rem; text-align: center;`;
-                
-                document.body.appendChild(lightbox);
-                
-                closeBtn.addEventListener('click', () => this.closeLightbox(lightbox));
-                lightbox.addEventListener('click', (e) => {
-                    if (e.target === lightbox) this.closeLightbox(lightbox);
-                });
-                
-                document.addEventListener('keydown', (e) => {
-                    if (e.key === 'Escape') this.closeLightbox(lightbox);
-                });
-            }
-            
-            closeLightbox(lightbox) {
-                lightbox.style.opacity = '0';
-                setTimeout(() => {
-                    if (lightbox && lightbox.parentNode) {
-                        lightbox.parentNode.removeChild(lightbox);
-                    }
-                }, 300);
-            }
-            
-            showError() {
-                this.galleryContainer.innerHTML = `
-                    <div class="text-center" style="grid-column: 1 / -1;">
-                        <i class="fas fa-exclamation-triangle text-gold" style="font-size: 2rem;"></i>
-                        <p style="margin-top: 1rem;">Unable to load gallery images. Please try again later.</p>
-                    </div>
-                `;
-            }
-        }
-        
-        // Initialize gallery when DOM is loaded
-        document.addEventListener('DOMContentLoaded', () => {
-            new GalleryManager();
-        });
-    </script>
-    
-    <!-- Google Translate -->
-    <script type="text/javascript">// <![CDATA[
-        function googleTranslateElementInit() {
-        new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
-        }
-        // ]]></script>
-        <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" type="text/javascript"></script>
-</body>
-</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Contact – Krishna Gurukul School" />
+  <link rel="canonical" href="https://www.krishnagurukulschool.in/contact.html" />
+  <title>Contact · Krishna Gurukul School</title>
+  <link rel="stylesheet" href="/css/tokens.css" />
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="/css/components.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header glass" role="banner">
+    <div class="container nav">
+      <a href="/" class="brand" aria-label="Krishna Gurukul School">
+        <img src="/images/logo-180.png" alt="School logo" width="36" height="36" />
+        <span>Krishna Gurukul School</span>
+      </a>
+      <nav aria-label="Primary">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>
+          <span class="visually-hidden">Toggle navigation</span>☰
+        </button>
+        <div id="primary-nav" class="nav-links glass" data-nav>
+          <a href="/about-us.html">About</a>
+          <a href="/admission.html">Admissions</a>
+          <a href="/academics.html">Academics</a>
+          <a href="/gallery.html">Gallery</a>
+          <a href="/news.html">News & Events</a>
+          <a href="/contact.html" aria-current="page" class="btn btn-outline">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container section">
+    <section class="hero glass">
+      <div class="hero-content">
+        <h1>Contact Us</h1>
+        <p class="lead">We'd love to hear from you. Send us a message and our team will respond shortly.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid">
+        <div class="glass p-5 rounded">
+          <h2>Enquiry Form</h2>
+          <form id="contact-form" class="form" novalidate>
+            <div class="grid-2">
+              <div class="field">
+                <label for="name">Full Name</label>
+                <input id="name" name="name" class="input" type="text" required />
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" class="input" type="email" required />
+              </div>
+            </div>
+            <div class="grid-2">
+              <div class="field">
+                <label for="phone">Phone</label>
+                <input id="phone" name="phone" class="input" type="tel" pattern="[0-9]{10}" required />
+                <small class="helper">10-digit number</small>
+              </div>
+              <div class="field">
+                <label for="subject">Subject</label>
+                <input id="subject" name="subject" class="input" type="text" required />
+              </div>
+            </div>
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" class="input" required></textarea>
+            </div>
+            <div>
+              <button type="submit" class="btn btn-primary">Send Message</button>
+            </div>
+          </form>
+        </div>
+        <div class="glass p-5 rounded">
+          <h2>Campus</h2>
+          <p class="mb-3">Manwal - Siyonti Rd, Siyonti, Punjab 145001, India</p>
+          <p class="mb-3">Phone: <a href="tel:+919416141994">+91 94161 41994</a><br>Email: <a href="mailto:info@krishnagurukulschool.in">info@krishnagurukulschool.in</a></p>
+          <div class="rounded overflow-hidden" style="aspect-ratio: 16 / 9; background: var(--color-surface);">
+            <!-- Map placeholder to avoid heavy embeds; replace with a static map image if required -->
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container cols">
+      <div>
+        <div class="brand mb-3"><img src="/images/logo-180.png" alt="" width="36" height="36"><strong>Krishna Gurukul School</strong></div>
+        <p class="muted">Manwal - Siyonti Rd, Siyonti, Punjab 145001, India</p>
+        <p class="muted">Phone: <a href="tel:+919416141994">+91 94161 41994</a> · Email: <a href="mailto:info@krishnagurukulschool.in">info@krishnagurukulschool.in</a></p>
+      </div>
+      <div>
+        <strong>Quick Links</strong>
+        <ul>
+          <li><a href="/admission.html">Admissions</a></li>
+          <li><a href="/academics.html">Academics</a></li>
+          <li><a href="/gallery.html">Gallery</a></li>
+          <li><a href="/news.html">News & Events</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong>Connect</strong>
+        <ul>
+          <li><a href="https://www.facebook.com" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container mt-4">
+      <small class="muted">© <span id="year"></span> Krishna Gurukul School. All rights reserved.</small>
+    </div>
+  </footer>
+
+  <script type="module" src="/js/ui.js" defer></script>
+  <script type="module" src="/js/validate.js" defer></script>
+</body>
+</html> 
