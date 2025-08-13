@@ -250,6 +250,7 @@
         .category-actions {
             display: flex;
             gap: 0.5rem;
+            flex-wrap: wrap;
         }
         
         .edit-btn {
@@ -265,6 +266,17 @@
         .edit-btn:hover {
             background: #218838;
         }
+
+        .reorder-btn {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 0.3rem 0.6rem;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .reorder-btn:hover { background: #5a6268; }
         
         .delete-category-btn {
             background: #dc3545;
@@ -504,10 +516,10 @@
             
             container.innerHTML = `
                 <div class="category-grid">
-                    ${categories.map(category => `
+                    ${categories.map((category, idx) => `
                         <div class="category-item">
                             <div style="display:flex; align-items:center; gap:0.75rem;">
-                                ${category.cover ? `<img src="../${category.cover}" alt="${category.name} cover" style="width:48px; height:48px; object-fit:cover; border-radius:6px; border:1px solid #e1e5e9;">` : `<div style="width:48px; height:48px; background:#eef2f7; border:1px dashed #cbd5e0; border-radius:6px; display:flex; align-items:center; justify-content:center; color:#667eea; font-weight:700;">?</div>`}
+                                ${category.cover ? `<img src="../${category.cover}" alt="${category.name} cover" style="width:48px; height:48px; object-fit:cover; object-position:center; border-radius:6px; border:1px solid #e1e5e9;">` : `<div style=\"width:48px; height:48px; background:#eef2f7; border:1px dashed #cbd5e0; border-radius:6px; display:flex; align-items:center; justify-content:center; color:#667eea; font-weight:700;\">?</div>`}
                                 <div>
                                     <div class="category-name">${category.name}</div>
                                     <div class="category-count">${categoryCounts[category.id] || 0} images</div>
@@ -516,11 +528,31 @@
                             <div class="category-actions">
                                 <button class="edit-btn" onclick="editCategory('${category.id}')">Edit</button>
                                 <button class="delete-category-btn" onclick="deleteCategory('${category.id}')">Delete</button>
+                                <button class="reorder-btn" onclick="moveCategory(${idx}, -1)">Up</button>
+                                <button class="reorder-btn" onclick="moveCategory(${idx}, 1)">Down</button>
                             </div>
                         </div>
                     `).join('')}
                 </div>
             `;
+        }
+
+        // Move category and persist order
+        window.moveCategory = async function(index, delta) {
+            const newIndex = index + delta;
+            if (newIndex < 0 || newIndex >= categories.length) return;
+            const copy = categories.slice();
+            const [moved] = copy.splice(index, 1);
+            copy.splice(newIndex, 0, moved);
+            categories = copy;
+            updateCategoryDisplay();
+            try {
+                await fetch('categories.php', {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ order: categories.map(c => c.id) })
+                });
+            } catch (_) {}
         }
         
         // Add new category

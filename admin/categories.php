@@ -84,9 +84,34 @@ switch ($method) {
         break;
         
     case 'PUT':
-        // Update category
+        // Update category or reorder list
         $input = json_decode(file_get_contents('php://input'), true);
         
+        // Reorder flow: body contains { order: [id1, id2, ...] }
+        if (isset($input['order']) && is_array($input['order'])) {
+            $categories = loadCategories();
+            $current = $categories['categories'];
+            $idToCat = [];
+            foreach ($current as $cat) { $idToCat[$cat['id']] = $cat; }
+            $new = [];
+            foreach ($input['order'] as $id) {
+                if (isset($idToCat[$id])) {
+                    $new[] = $idToCat[$id];
+                    unset($idToCat[$id]);
+                }
+            }
+            // Append any categories not specified to preserve data
+            foreach ($idToCat as $remaining) { $new[] = $remaining; }
+            $categories['categories'] = $new;
+            if (saveCategories($categories)) {
+                echo json_encode(['success' => true, 'message' => 'Order updated']);
+            } else {
+                echo json_encode(['success' => false, 'message' => 'Failed to update order']);
+            }
+            exit;
+        }
+        
+        // Update flow: requires id and name
         if (!isset($input['id']) || !isset($input['name']) || empty(trim($input['name']))) {
             echo json_encode(['success' => false, 'message' => 'Category ID and name are required']);
             exit;
