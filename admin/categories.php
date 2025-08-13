@@ -70,7 +70,8 @@ switch ($method) {
         $newCategory = [
             'id' => generateCategoryId($name),
             'name' => $name,
-            'description' => $input['description'] ?? ''
+            'description' => $input['description'] ?? '',
+            'cover' => $input['cover'] ?? ''
         ];
         
         $categories['categories'][] = $newCategory;
@@ -101,6 +102,10 @@ switch ($method) {
             if ($category['id'] === $id) {
                 $category['name'] = $name;
                 $category['description'] = $input['description'] ?? $category['description'];
+                // Allow setting/updating a cover image URL for album cover
+                if (array_key_exists('cover', $input)) {
+                    $category['cover'] = $input['cover'];
+                }
                 $found = true;
                 break;
             }

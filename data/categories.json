@@ -1,29 +1,52 @@
 {
     "categories": [
         {
-            "id": "campus",
-            "name": "Campus",
-            "description": "School campus and buildings"
-        },
-        {
             "id": "facilities",
             "name": "Facilities",
-            "description": "School facilities and infrastructure"
+            "description": "School facilities and infrastructure",
+            "cover": "images/gallery/upload_1755092357_0cea90f19df31b88.jpeg"
         },
         {
             "id": "activities",
             "name": "Activities",
-            "description": "Student activities and programs"
+            "description": "Student activities and programs",
+            "cover": "images/gallery/upload_1755092610_618331f6afeda14d.jpeg"
         },
         {
-            "id": "students",
-            "name": "Students",
-            "description": "Student life and events"
+            "id": "campus-tour",
+            "name": "Campus Tour",
+            "description": "",
+            "cover": "images/gallery/upload_1755090858_0e71c08353d10a65.jpg"
         },
         {
-            "id": "events",
-            "name": "Events",
-            "description": "Special events and celebrations"
+            "id": "vaisakhi",
+            "name": "Vaisakhi",
+            "description": "",
+            "cover": "images/gallery/upload_1755092750_9944a2482021334e.jpg"
+        },
+        {
+            "id": "results",
+            "name": "Results",
+            "description": "",
+            "cover": "images/gallery/upload_1755093152_1fd585ad79d5c368.jpg"
+        },
+        {
+            "id": "computer-lab",
+            "name": "Computer lab",
+            "description": "",
+            "cover": "images/gallery/upload_1755093254_e15897ee19e88fbd.jpg"
+        },
+        {
+            "id": "school-trip",
+            "name": "School trip",
+            "description": "",
+            "cover": "images/gallery/upload_1755093351_359cb056f63aae52.jpg"
+        },
+        {
+            "id": "staff",
+            "name": "Staff",
+            "description": "",
+            "cover": "images/gallery/upload_1755093483_dfe548e2456153d1.jpg"
         }
     ]
 }

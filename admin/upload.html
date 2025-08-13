@@ -361,12 +361,13 @@
             <h2>Upload New Image</h2>
             <form id="uploadForm">
                 <div class="form-group">
-                    <label for="imageFile">Select Image:</label>
-                    <input type="file" id="imageFile" name="image" accept="image/*" required>
+                    <label for="imageFile">Select Images:</label>
+                    <input type="file" id="imageFile" name="image" accept="image/*" multiple required>
                 </div>
                 
                 <div class="preview" id="imagePreview" style="display: none;">
                     <img id="previewImg" src="" alt="Preview">
+                    <div id="previewCount" style="margin-top: 0.5rem; color: #555;"></div>
                 </div>
                 
                 <div class="form-group">
@@ -386,7 +387,7 @@
                     </select>
                 </div>
                 
-                <button type="submit" class="upload-btn" id="uploadBtn">Upload Image</button>
+                <button type="submit" class="upload-btn" id="uploadBtn">Upload Images</button>
             </form>
             <div id="uploadMessage"></div>
         </div>
@@ -505,9 +506,12 @@
                 <div class="category-grid">
                     ${categories.map(category => `
                         <div class="category-item">
-                            <div>
-                                <div class="category-name">${category.name}</div>
-                                <div class="category-count">${categoryCounts[category.id] || 0} images</div>
+                            <div style="display:flex; align-items:center; gap:0.75rem;">
+                                ${category.cover ? `<img src="../${category.cover}" alt="${category.name} cover" style="width:48px; height:48px; object-fit:cover; border-radius:6px; border:1px solid #e1e5e9;">` : `<div style="width:48px; height:48px; background:#eef2f7; border:1px dashed #cbd5e0; border-radius:6px; display:flex; align-items:center; justify-content:center; color:#667eea; font-weight:700;">?</div>`}
+                                <div>
+                                    <div class="category-name">${category.name}</div>
+                                    <div class="category-count">${categoryCounts[category.id] || 0} images</div>
+                                </div>
                             </div>
                             <div class="category-actions">
                                 <button class="edit-btn" onclick="editCategory('${category.id}')">Edit</button>
@@ -635,61 +639,217 @@
 
         // Image preview
         document.getElementById('imageFile').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
+            const files = Array.from(e.target.files || []);
+            const previewContainer = document.getElementById('imagePreview');
+            const previewImg = document.getElementById('previewImg');
+            const previewCount = document.getElementById('previewCount');
+            
+            if (files.length > 0) {
                 const reader = new FileReader();
-                reader.onload = function(e) {
-                    document.getElementById('previewImg').src = e.target.result;
-                    document.getElementById('imagePreview').style.display = 'block';
+                reader.onload = function(ev) {
+                    previewImg.src = ev.target.result;
+                    previewContainer.style.display = 'block';
                 };
-                reader.readAsDataURL(file);
+                reader.readAsDataURL(files[0]);
+                
+                if (files.length > 1) {
+                    previewCount.textContent = `+ ${files.length - 1} more selected`;
+                } else {
+                    previewCount.textContent = '';
+                }
+            } else {
+                previewContainer.style.display = 'none';
+                previewImg.src = '';
+                previewCount.textContent = '';
             }
         });
 
-        // Upload form
-        document.getElementById('uploadForm').addEventListener('submit', async function(e) {
+        // Compress image to <=1200px width and ~200KB as JPEG
+        async function compressImageToJpeg(file, maxWidth = 1200, targetKB = 200) {
+            return new Promise((resolve) => {
+                try {
+                    const img = new Image();
+                    const reader = new FileReader();
+                    reader.onload = function(ev) {
+                        img.onload = function() {
+                            const canvas = document.createElement('canvas');
+                            const ctx = canvas.getContext('2d');
+                            const scale = Math.min(1, maxWidth / img.width);
+                            const w = Math.round(img.width * scale);
+                            const h = Math.round(img.height * scale);
+                            canvas.width = w;
+                            canvas.height = h;
+                            ctx.drawImage(img, 0, 0, w, h);
+
+                            // Iteratively adjust quality to hit target size
+                            let quality = 0.85;
+                            const tryBlob = () => {
+                                canvas.toBlob(async (blob) => {
+                                    if (!blob) {
+                                        resolve(file); // fallback to original
+                                        return;
+                                    }
+                                    const sizeKB = Math.ceil(blob.size / 1024);
+                                    if (sizeKB > targetKB && quality > 0.4) {
+                                        quality -= 0.1;
+                                        return tryBlob();
+                                    }
+                                    const name = (file.name.replace(/\.[^.]+$/, '') || 'image') + '.jpg';
+                                    const out = new File([blob], name, { type: 'image/jpeg' });
+                                    resolve(out);
+                                }, 'image/jpeg', quality);
+                            };
+                            tryBlob();
+                        };
+                        img.src = ev.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                } catch (_) {
+                    resolve(file); // if anything fails, send original file
+                }
+            });
+        }
+
+         // Upload form
+         document.getElementById('uploadForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            const formData = new FormData();
             const fileInput = document.getElementById('imageFile');
+            const files = Array.from(fileInput.files || []);
             const titleInput = document.getElementById('imageTitle');
             const captionInput = document.getElementById('imageCaption');
             const categoryInput = document.getElementById('imageCategory');
             
-            formData.append('image', fileInput.files[0]);
-            formData.append('title', titleInput.value);
-            formData.append('caption', captionInput.value);
-            formData.append('category', categoryInput.value);
+            // Snapshot current values to prevent accidental resets during async ops
+            const snapshot = {
+                title: titleInput.value,
+                caption: captionInput.value,
+                category: categoryInput.value
+            };
             
             const uploadBtn = document.getElementById('uploadBtn');
             const messageDiv = document.getElementById('uploadMessage');
             
+            if (files.length === 0) {
+                messageDiv.innerHTML = '<div class="message error">Please select at least one image.</div>';
+                return;
+            }
+            if (!snapshot.title || !snapshot.caption || !snapshot.category) {
+                messageDiv.innerHTML = '<div class="message error">Please fill Title, Caption and select a Category before uploading.</div>';
+                return;
+            }
+            
             uploadBtn.disabled = true;
             uploadBtn.textContent = 'Uploading...';
+            messageDiv.innerHTML = '';
             
-            try {
-                const response = await fetch('upload.php', {
-                    method: 'POST',
-                    body: formData
-                });
+            let successCount = 0;
+            let failCount = 0;
+            const failures = [];
+            
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                const messageDiv = document.getElementById('uploadMessage');
+                messageDiv.innerHTML = `<div class="message">Preparing ${i+1}/${files.length}...</div>`;
+
+                // Compress to respect server limits and project rules (<1200px, ~200KB)
+                const processedFile = await compressImageToJpeg(file, 1200, 200);
+                const formData = new FormData();
+                formData.append('image', processedFile, processedFile.name);
+                formData.append('title', snapshot.title);
+                formData.append('caption', snapshot.caption);
+                formData.append('category', snapshot.category);
                 
-                const result = await response.json();
-                
-                if (result.success) {
-                    messageDiv.innerHTML = `<div class="message success">Image uploaded successfully! URL: ${result.url}</div>`;
-                    document.getElementById('uploadForm').reset();
-                    document.getElementById('imagePreview').style.display = 'none';
-                    loadGallery(); // Refresh gallery
-                } else {
-                    messageDiv.innerHTML = `<div class="message error">Upload failed: ${result.message}</div>`;
+                try {
+                    const response = await fetch('upload.php', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    const result = await response.json();
+                    if (result && result.success) {
+                        successCount++;
+                        // Keep field values stable
+                        titleInput.value = snapshot.title;
+                        captionInput.value = snapshot.caption;
+                        categoryInput.value = snapshot.category;
+                        // Optional: if no cover set for this category yet, set first successful upload as cover
+                        const categoryId = categoryInput.value;
+                        const cat = categories.find(c => c.id === categoryId);
+                        if (cat && (!cat.cover || cat.cover === '')) {
+                            try {
+                                await fetch('categories.php', {
+                                    method: 'PUT',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify({ id: categoryId, name: cat.name, description: cat.description || '', cover: result.url })
+                                });
+                                // Refresh local categories view
+                                // Do not reload categories mid-upload; just update local state and UI to preserve selection
+                                cat.cover = result.url;
+                                try { updateCategoryDisplay(); } catch (_) {}
+                            } catch (_) {}
+                        }
+                    } else {
+                        failCount++;
+                        failures.push(file.name + (result && result.message ? `: ${result.message}` : ''));
+                    }
+                } catch (err) {
+                    failCount++;
+                    failures.push(file.name + ': Network or server error');
                 }
-            } catch (error) {
-                messageDiv.innerHTML = '<div class="message error">Upload failed. Please try again.</div>';
-            } finally {
-                uploadBtn.disabled = false;
-                uploadBtn.textContent = 'Upload Image';
+                
+                messageDiv.innerHTML = `<div class="message">Uploaded ${successCount + failCount} / ${files.length}...</div>`;
+            }
+            
+            if (failCount === 0) {
+                messageDiv.innerHTML = `<div class="message success">Successfully uploaded ${successCount} image(s).</div>`;
+            } else if (successCount === 0) {
+                messageDiv.innerHTML = `<div class="message error">All uploads failed. ${failures.length ? ('Details: ' + failures.join(', ')) : ''}</div>`;
+            } else {
+                messageDiv.innerHTML = `<div class="message error">${successCount} succeeded, ${failCount} failed. ${failures.length ? ('Details: ' + failures.join(', ')) : ''}</div>`;
+            }
+            
+            try { await loadGallery(); } catch (_) {}
+            
+            uploadBtn.disabled = false;
+            uploadBtn.textContent = 'Upload Images';
+            
+            // Reset selection and preview only if at least one succeeded
+            if (successCount > 0) {
+                fileInput.value = '';
+                const previewContainer = document.getElementById('imagePreview');
+                const previewImg = document.getElementById('previewImg');
+                const previewCount = document.getElementById('previewCount');
+                previewContainer.style.display = 'none';
+                previewImg.src = '';
+                previewCount.textContent = '';
+                // Preserve text fields and category after successful batch
+                titleInput.value = snapshot.title;
+                captionInput.value = snapshot.caption;
+                categoryInput.value = snapshot.category;
             }
         });
+
+        // Allow setting an image as category cover from the Current Gallery grid
+        window.setAsCover = async function(imageUrl, categoryId) {
+            const cat = categories.find(c => c.id === categoryId);
+            if (!cat) return;
+            try {
+                const res = await fetch('categories.php', {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ id: cat.id, name: cat.name, description: cat.description || '', cover: imageUrl.replace('../', '') })
+                });
+                const result = await res.json();
+                if (result && result.success) {
+                    await loadCategories();
+                    alert('Album cover updated');
+                } else {
+                    alert('Failed to update album cover');
+                }
+            } catch (e) {
+                alert('Failed to update album cover');
+            }
+        }
 
         // Load gallery
         async function loadGallery() {
@@ -714,6 +874,7 @@
                                         <span class="category">${getCategoryName(item.category)}</span>
                                         <br>
                                         <button class="delete-btn" onclick="deleteImage(${item.id})">Delete</button>
+                                        <button class="edit-btn" style="margin-left:0.5rem" onclick="setAsCover('../${item.url}', '${item.category}')">Set as Album Cover</button>
                                     </div>
                                 </div>
                             `).join('')}

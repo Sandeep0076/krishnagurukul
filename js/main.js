@@ -97,7 +97,7 @@ class KrishnaGurukulWebsite {
   }
 
   renderGallery(galleryItems) {
-    const galleryContainer = document.querySelector('.gallery-grid');
+    const galleryContainer = document.querySelector('[data-home-gallery]');
     
     if (!galleryContainer) return;
 
@@ -121,7 +121,7 @@ class KrishnaGurukulWebsite {
   }
 
   handleGalleryError() {
-    const galleryContainer = document.querySelector('.gallery-grid');
+    const galleryContainer = document.querySelector('[data-home-gallery]');
     if (galleryContainer) {
       galleryContainer.innerHTML = `
         <div class="text-center" style="grid-column: 1 / -1;">

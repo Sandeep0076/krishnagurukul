@@ -220,8 +220,9 @@
             constructor() {
                 this.galleryContainer = document.getElementById('gallery-container');
                 this.filterButtons = document.querySelectorAll('.filter-btn');
-                this.currentFilter = 'all';
+                this.currentFilter = 'albums';
                 this.galleryData = [];
+                this.categories = [];
                 
                 this.init();
             }
@@ -230,7 +231,7 @@
                 await this.loadCategories();
                 await this.loadGalleryData();
                 this.setupFilterButtons();
-                this.renderGallery();
+                this.renderAlbums();
             }
             
             async loadCategories() {
@@ -256,10 +257,19 @@
             }
             
             setupFilterButtons() {
-                // Create category filter buttons dynamically
+                // Replace filter buttons with an Albums button and dynamic category buttons
                 const filterContainer = document.getElementById('filter-buttons');
+                if (!filterContainer) return;
                 
-                // Add category buttons
+                filterContainer.innerHTML = '';
+                
+                const albumsBtn = document.createElement('button');
+                albumsBtn.className = 'filter-btn active';
+                albumsBtn.dataset.filter = 'albums';
+                albumsBtn.style.cssText = 'padding: 0.8rem 2rem; border: 2px solid var(--secondary-teal); background: var(--secondary-teal); color: white; border-radius: 25px; cursor: pointer; font-weight: 600; transition: var(--transition-smooth);';
+                albumsBtn.textContent = 'Albums';
+                filterContainer.appendChild(albumsBtn);
+                
                 this.categories.forEach(category => {
                     const button = document.createElement('button');
                     button.className = 'filter-btn';
@@ -269,11 +279,10 @@
                     filterContainer.appendChild(button);
                 });
                 
-                // Get all filter buttons (including the dynamically added ones)
                 this.filterButtons = document.querySelectorAll('.filter-btn');
                 
                 this.filterButtons.forEach(button => {
-                    button.addEventListener('click', (e) => {
+                    button.addEventListener('click', () => {
                         // Update active state
                         this.filterButtons.forEach(btn => {
                             btn.classList.remove('active');
@@ -285,19 +294,77 @@
                         button.style.background = 'var(--secondary-teal)';
                         button.style.color = 'white';
                         
-                        // Filter gallery
                         this.currentFilter = button.dataset.filter;
-                        this.renderGallery();
+                        if (this.currentFilter === 'albums') {
+                            this.renderAlbums();
+                        } else {
+                            this.renderGallery(this.currentFilter);
+                        }
                     });
                 });
             }
             
-            renderGallery() {
-                const filteredData = this.currentFilter === 'all' 
-                    ? this.galleryData 
-                    : this.galleryData.filter(item => item.category === this.currentFilter);
+            // Render albums (categories) grid
+            renderAlbums() {
+                const albums = this.categories;
+                const counts = this.galleryData.reduce((acc, item) => {
+                    acc[item.category] = (acc[item.category] || 0) + 1;
+                    return acc;
+                }, {});
                 
-                this.galleryContainer.innerHTML = filteredData.map(item => `
+                const albumCards = albums.map(cat => {
+                    const cover = cat.cover && cat.cover.trim() ? cat.cover : (this.galleryData.find(g => g.category === cat.id)?.url || 'images/logo-250.png');
+                    const count = counts[cat.id] || 0;
+                    return `
+                        <div class="gallery-item album-card" data-album="${cat.id}" style="cursor:pointer;">
+                            <img src="${cover}" alt="${cat.name} album cover" loading="lazy">
+                            <div class="gallery-overlay">
+                                <div>
+                                    <h4>${cat.name}</h4>
+                                    <p>${count} photo${count===1?'':'s'}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+                
+                this.galleryContainer.innerHTML = albumCards || '<div class="text-center" style="grid-column: 1 / -1;">No albums found.</div>';
+                
+                // Click to open album
+                document.querySelectorAll('.album-card').forEach(card => {
+                    card.addEventListener('click', () => {
+                        const albumId = card.getAttribute('data-album');
+                        this.currentFilter = albumId;
+                        this.renderGallery(albumId);
+                        // Update buttons state
+                        this.filterButtons.forEach(btn => {
+                            btn.classList.remove('active');
+                            btn.style.background = 'transparent';
+                            btn.style.color = 'var(--secondary-teal)';
+                        });
+                        const activeBtn = Array.from(this.filterButtons).find(b => b.dataset.filter === albumId);
+                        if (activeBtn) {
+                            activeBtn.classList.add('active');
+                            activeBtn.style.background = 'var(--secondary-teal)';
+                            activeBtn.style.color = 'white';
+                        }
+                    });
+                });
+            }
+            
+            // Render photos of a specific album
+            renderGallery(categoryId) {
+                const filteredData = categoryId ? this.galleryData.filter(item => item.category === categoryId) : this.galleryData;
+                
+                const backBtn = `
+                    <div class="text-center" style="grid-column: 1 / -1; margin-bottom: 1rem;">
+                        <button id="back-to-albums" class="filter-btn" style="padding: 0.6rem 1.2rem; border: 2px solid var(--secondary-teal); background: transparent; color: var(--secondary-teal); border-radius: 25px; cursor: pointer; font-weight: 600;">
+                            ← Back to Albums
+                        </button>
+                    </div>
+                `;
+                
+                const photos = filteredData.map(item => `
                     <div class="gallery-item" data-category="${item.category}">
                         <img src="${item.url}" alt="${item.title}" loading="lazy">
                         <div class="gallery-overlay">
@@ -309,12 +376,33 @@
                     </div>
                 `).join('');
                 
-                // Add click handlers for lightbox
+                this.galleryContainer.innerHTML = backBtn + photos;
+                
+                // Back handler
+                const back = document.getElementById('back-to-albums');
+                if (back) back.addEventListener('click', () => {
+                    // Reset buttons selection to Albums
+                    this.filterButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                        btn.style.background = 'transparent';
+                        btn.style.color = 'var(--secondary-teal)';
+                    });
+                    const albumsBtn = Array.from(this.filterButtons).find(b => b.dataset.filter === 'albums');
+                    if (albumsBtn) {
+                        albumsBtn.classList.add('active');
+                        albumsBtn.style.background = 'var(--secondary-teal)';
+                        albumsBtn.style.color = 'white';
+                    }
+                    this.currentFilter = 'albums';
+                    this.renderAlbums();
+                });
+                
+                // Lightbox for photos
                 this.setupLightbox();
             }
             
             setupLightbox() {
-                const galleryItems = document.querySelectorAll('.gallery-item');
+                const galleryItems = document.querySelectorAll('.gallery-item:not(.album-card)');
                 galleryItems.forEach(item => {
                     item.addEventListener('click', () => {
                         const img = item.querySelector('img');
@@ -330,3 +418,48 @@
                 const lightbox = document.createElement('div');
                 lightbox.className = 'lightbox-overlay';
                 lightbox.innerHTML = `
+                    <div class="lightbox-content">
+                        <button class="lightbox-close" aria-label="Close lightbox">&times;</button>
+                        <img src="${imageSrc}" alt="${title}">
+                        <div class="lightbox-info">
+                            <h3>${title}</h3>
+                            <p>${caption}</p>
+                        </div>
+                    </div>
+                `;
+
+                // Basic styles (inline to avoid CSS changes)
+                lightbox.style.cssText = `position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,31,63,0.9); display:flex; align-items:center; justify-content:center; z-index:10000; padding:2rem;`;
+                const content = lightbox.querySelector('.lightbox-content');
+                content.style.cssText = `position:relative; max-width:90%; max-height:90%; background:#fff; border-radius:12px; overflow:hidden;`;
+                const closeBtn = lightbox.querySelector('.lightbox-close');
+                closeBtn.style.cssText = `position:absolute; top:1rem; right:1rem; background:var(--primary-navy); color:#fff; border:none; width:40px; height:40px; border-radius:50%; font-size:1.5rem; cursor:pointer;`;
+                const img = lightbox.querySelector('img');
+                img.style.cssText = `width:100%; height:auto; display:block;`;
+                const info = lightbox.querySelector('.lightbox-info');
+                info.style.cssText = `padding:1rem; text-align:center;`;
+
+                document.body.appendChild(lightbox);
+                
+                const close = () => {
+                    if (!lightbox.parentNode) return;
+                    lightbox.style.opacity = '0';
+                    setTimeout(() => lightbox.remove(), 250);
+                };
+                closeBtn.addEventListener('click', close);
+                lightbox.addEventListener('click', (e) => { if (e.target === lightbox) close(); });
+                const escHandler = (e) => { if (e.key === 'Escape') { close(); document.removeEventListener('keydown', escHandler); } };
+                document.addEventListener('keydown', escHandler);
+            }
+        }
+
+        // Initialize on DOM ready
+        document.addEventListener('DOMContentLoaded', () => {
+            new GalleryManager();
+        });
+        </script>
+
+        <!-- Google Translate -->
+        <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" type="text/javascript"></script>
+    </body>
+</html>
