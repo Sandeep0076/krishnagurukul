@@ -7,16 +7,16 @@
             "cover": "images/gallery/upload_1755090858_0e71c08353d10a65.jpg"
         },
         {
-            "id": "staff",
-            "name": "Staff",
-            "description": "",
-            "cover": "images/gallery/upload_1755093483_dfe548e2456153d1.jpg"
-        },
-        {
             "id": "facilities",
             "name": "Facilities",
             "description": "School facilities and infrastructure",
             "cover": "images/gallery/upload_1755092357_0cea90f19df31b88.jpeg"
+        },
+        {
+            "id": "staff",
+            "name": "Staff",
+            "description": "",
+            "cover": "images/gallery/upload_1755093483_dfe548e2456153d1.jpg"
         },
         {
             "id": "computer-lab",
