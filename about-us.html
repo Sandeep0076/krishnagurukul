@@ -169,7 +169,7 @@
                     </div>
                     
                     <div>
-                        <img src="images/gallery/staff/IMG_20240304_133227.jpg" alt="Managing Director" class="principal-image">
+                        <img src="images/principa.jpg" alt="Managing Director" class="principal-image">
                     </div>
                 </div>
             </div>
@@ -238,13 +238,47 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2025 Krishna Gurukul School. All Rights Reserved. | Designed with ❤️ for Excellence in Education</p>
+                <p>&copy; <span id="currentYear"></span> Krishna Gurukul School. All Rights Reserved. | Designed with ❤️ for Excellence in Education</p>
             </div>
         </div>
     </footer>
 
     <!-- JavaScript -->
     <script type="module" src="js/main.js"></script>
+    
+    <!-- Dynamic Date Script -->
+    <script>
+        // Function to update dynamic dates
+        function updateDynamicDates() {
+            const currentDate = new Date();
+            const currentYear = currentDate.getFullYear();
+            const currentMonth = currentDate.getMonth() + 1; // January = 1, December = 12
+            
+            // If we're in April or later (month >= 4), show next academic year
+            // If we're before April (month < 4), show current academic year
+            let academicYear;
+            if (currentMonth >= 4) {
+                academicYear = currentYear + 1; // Next year
+            } else {
+                academicYear = currentYear; // Current year
+            }
+            
+            // Update all current year spans (for copyright, etc.)
+            const currentYearSpans = document.querySelectorAll('#currentYear');
+            currentYearSpans.forEach(span => {
+                span.textContent = currentYear;
+            });
+            
+            // Update all next year spans (for academic year)
+            const nextYearSpans = document.querySelectorAll('#nextYear');
+            nextYearSpans.forEach(span => {
+                span.textContent = academicYear;
+            });
+        }
+        
+        // Update dates when page loads
+        document.addEventListener('DOMContentLoaded', updateDynamicDates);
+    </script>
     
     <!-- Google Translate -->
     <script type="text/javascript">// <![CDATA[

@@ -96,7 +96,7 @@
                                     <i class="fas fa-chevron-right"></i>
                                 </button>
                             </div>
-                            <h3 id="current-month">August 2025</h3>
+                            <h3 id="current-month">August <span id="currentYear"></span></h3>
                         </div>
                         <div class="calendar-actions">
                             <button id="add-to-google" class="calendar-btn primary">
@@ -180,7 +180,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2025 Krishna Gurukul School. All rights reserved.</p>
+                <p>&copy; <span id="currentYear"></span> Krishna Gurukul School. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -189,5 +189,39 @@
     <script src="js/calendar-config.js"></script>
     <script src="js/main.js"></script>
     <script src="js/calendar.js"></script>
+    
+    <!-- Dynamic Date Script -->
+    <script>
+        // Function to update dynamic dates
+        function updateDynamicDates() {
+            const currentDate = new Date();
+            const currentYear = currentDate.getFullYear();
+            const currentMonth = currentDate.getMonth() + 1; // January = 1, December = 12
+            
+            // If we're in April or later (month >= 4), show next academic year
+            // If we're before April (month < 4), show current academic year
+            let academicYear;
+            if (currentMonth >= 4) {
+                academicYear = currentYear + 1; // Next year
+            } else {
+                academicYear = currentYear; // Current year
+            }
+            
+            // Update all current year spans (for copyright, etc.)
+            const currentYearSpans = document.querySelectorAll('#currentYear');
+            currentYearSpans.forEach(span => {
+                span.textContent = currentYear;
+            });
+            
+            // Update all next year spans (for academic year)
+            const nextYearSpans = document.querySelectorAll('#nextYear');
+            nextYearSpans.forEach(span => {
+                span.textContent = academicYear;
+            });
+        }
+        
+        // Update dates when page loads
+        document.addEventListener('DOMContentLoaded', updateDynamicDates);
+    </script>
 </body>
 </html> 
