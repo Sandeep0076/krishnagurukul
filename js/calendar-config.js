@@ -9,7 +9,7 @@ const CALENDAR_CONFIG = {
     // 3. Select "Settings and sharing"
     // 4. Scroll down to "Integrate calendar"
     // 5. Copy the "Calendar ID" (it looks like: example@gmail.com or a long string)
-    CALENDAR_ID: 'YOUR_GOOGLE_CALENDAR_ID',
+    CALENDAR_ID: 'krishnagurukul2000@gmail.com',
     
     // Replace with your Google API key
     // To get an API key:
@@ -17,7 +17,7 @@ const CALENDAR_CONFIG = {
     // 2. Create a new project or select existing one
     // 3. Enable Google Calendar API
     // 4. Go to "Credentials" and create an API key
-    API_KEY: 'YOUR_GOOGLE_API_KEY',
+    API_KEY: 'AIzaSyAsLBeGHrJF4COMo24A8EjX-0a4NYjZiq8',
     
     // Replace with your Google Client ID
     // To get a client ID:

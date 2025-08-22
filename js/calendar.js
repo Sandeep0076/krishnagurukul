@@ -91,7 +91,8 @@ class SchoolCalendar {
             const endDate = `${nextYear}${nextMonthStr}01`;
             
             const settings = this.config.DISPLAY_SETTINGS;
-            const newSrc = `https://calendar.google.com/calendar/embed?src=${encodeURIComponent(this.config.CALENDAR_ID)}&ctz=${encodeURIComponent(this.config.TIMEZONE)}&mode=${settings.mode}&showTitle=${settings.showTitle ? 1 : 0}&showNav=${settings.showNav ? 1 : 0}&showDate=${settings.showDate ? 1 : 0}&showPrint=${settings.showPrint ? 1 : 0}&showTabs=${settings.showTabs ? 1 : 0}&showCalendars=${settings.showCalendars ? 1 : 0}&showTz=${settings.showTz ? 1 : 0}&height=${settings.height}&dates=${startDate}%2F${endDate}`;
+            // Use public embed format that doesn't require authentication
+            const newSrc = `https://calendar.google.com/calendar/embed?src=${encodeURIComponent(this.config.CALENDAR_ID)}&ctz=${encodeURIComponent(this.config.TIMEZONE)}&mode=${settings.mode}&showTitle=${settings.showTitle ? 1 : 0}&showNav=${settings.showNav ? 1 : 0}&showDate=${settings.showDate ? 1 : 0}&showPrint=${settings.showPrint ? 1 : 0}&showTabs=0&showCalendars=0&showTz=${settings.showTz ? 1 : 0}&height=${settings.height}&dates=${startDate}%2F${endDate}`;
             
             iframe.src = newSrc;
         }
@@ -99,23 +100,29 @@ class SchoolCalendar {
 
     setupGoogleCalendarIntegration() {
         // Check if Google Calendar ID is configured
-        if (this.config.CALENDAR_ID === 'YOUR_GOOGLE_CALENDAR_ID') {
+        if (this.config.CALENDAR_ID === 'YOUR_GOOGLE_CALENDAR_ID' || this.config.CALENDAR_ID === '') {
             console.warn('Google Calendar ID not configured. Please update the calendar-config.js file.');
             this.showCalendarSetupMessage();
             return;
         }
 
-        // Load Google Calendar API if needed
-        if (typeof gapi !== 'undefined') {
-            gapi.load('client:auth2', this.initGoogleCalendarAPI.bind(this));
-        } else {
-            // Fallback: Load Google Calendar API script
-            const script = document.createElement('script');
-            script.src = 'https://apis.google.com/js/api.js';
-            script.onload = () => {
+        // For basic calendar display, we don't need the full API
+        // The iframe embed will work with just the Calendar ID
+        console.log('Calendar configured with ID:', this.config.CALENDAR_ID);
+        
+        // Only load full API if we have all credentials for advanced features
+        if (this.config.API_KEY !== 'YOUR_GOOGLE_API_KEY' && this.config.CLIENT_ID !== 'YOUR_GOOGLE_CLIENT_ID') {
+            if (typeof gapi !== 'undefined') {
                 gapi.load('client:auth2', this.initGoogleCalendarAPI.bind(this));
-            };
-            document.head.appendChild(script);
+            } else {
+                // Fallback: Load Google Calendar API script
+                const script = document.createElement('script');
+                script.src = 'https://apis.google.com/js/api.js';
+                script.onload = () => {
+                    gapi.load('client:auth2', this.initGoogleCalendarAPI.bind(this));
+                };
+                document.head.appendChild(script);
+            }
         }
     }
 
@@ -160,14 +167,59 @@ class SchoolCalendar {
 
     async loadQuickEvents() {
         try {
-            // Load events from the existing events.json
-            const response = await fetch('/data/events.json');
-            const events = await response.json();
-            
-            this.displayQuickEvents(events);
+            // Try to load events from Google Calendar first
+            if (this.config.CALENDAR_ID !== 'YOUR_GOOGLE_CALENDAR_ID' && this.config.API_KEY !== 'YOUR_GOOGLE_API_KEY') {
+                await this.loadGoogleCalendarEvents();
+            } else {
+                // Fallback to local events.json
+                const response = await fetch('/data/events.json');
+                const events = await response.json();
+                this.displayQuickEvents(events);
+            }
         } catch (error) {
             console.error('Error loading events:', error);
-            this.displayQuickEvents([]);
+            // Fallback to local events.json
+            try {
+                const response = await fetch('/data/events.json');
+                const events = await response.json();
+                this.displayQuickEvents(events);
+            } catch (fallbackError) {
+                console.error('Fallback error:', fallbackError);
+                this.displayQuickEvents([]);
+            }
+        }
+    }
+
+    async loadGoogleCalendarEvents() {
+        try {
+            const now = new Date();
+            const endDate = new Date();
+            endDate.setMonth(endDate.getMonth() + 2); // Get events for next 2 months
+            
+            const timeMin = now.toISOString();
+            const timeMax = endDate.toISOString();
+            
+            const url = `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(this.config.CALENDAR_ID)}/events?key=${this.config.API_KEY}&timeMin=${timeMin}&timeMax=${timeMax}&singleEvents=true&orderBy=startTime&maxResults=10`;
+            
+            const response = await fetch(url);
+            const data = await response.json();
+            
+            if (data.items && data.items.length > 0) {
+                const events = data.items.map(item => ({
+                    title: item.summary || 'Untitled Event',
+                    date: item.start.dateTime || item.start.date,
+                    time: item.start.dateTime ? new Date(item.start.dateTime).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }) : null,
+                    location: item.location || null,
+                    description: item.description || null
+                }));
+                
+                this.displayQuickEvents(events);
+            } else {
+                this.displayQuickEvents([]);
+            }
+        } catch (error) {
+            console.error('Error loading Google Calendar events:', error);
+            throw error; // Re-throw to trigger fallback
         }
     }
 
@@ -225,7 +277,7 @@ class SchoolCalendar {
     }
 
     addToGoogleCalendar() {
-        if (this.config.CALENDAR_ID === 'YOUR_GOOGLE_CALENDAR_ID') {
+        if (this.config.CALENDAR_ID === 'YOUR_GOOGLE_CALENDAR_ID' || this.config.CALENDAR_ID === '') {
             alert('Please configure your Google Calendar ID first. See js/calendar-config.js for instructions.');
             return;
         }
