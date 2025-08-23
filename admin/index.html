@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login - Krishna Gurukul School</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -71,6 +73,44 @@
             border-color: #667eea;
         }
         
+        .password-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        
+        .password-container input {
+            flex: 1;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            border-right: none;
+        }
+        
+        .password-toggle {
+            background: #f8f9fa;
+            border: 2px solid #e1e5e9;
+            border-left: none;
+            padding: 12px;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            cursor: pointer;
+            color: #666;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 44px;
+        }
+        
+        .password-toggle:hover {
+            background: #e9ecef;
+            color: #333;
+        }
+        
+        .password-toggle:active {
+            background: #dee2e6;
+        }
+        
         .login-btn {
             width: 100%;
             padding: 12px;
@@ -110,7 +150,12 @@
         <form id="loginForm">
             <div class="form-group">
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
+                <div class="password-container">
+                    <input type="password" id="password" name="password" required>
+                    <span class="password-toggle" onclick="togglePasswordVisibility()">
+                        <i class="fas fa-eye"></i>
+                    </span>
+                </div>
             </div>
             <button type="submit" class="login-btn">Login</button>
         </form>
@@ -123,9 +168,9 @@
             
             const password = document.getElementById('password').value;
             const messageDiv = document.getElementById('message');
+            messageDiv.innerHTML = '';
             
             try {
-                console.log('Attempting login with password:', password);
                 const response = await fetch('login.php', {
                     method: 'POST',
                     headers: {
@@ -134,32 +179,54 @@
                     body: `password=${encodeURIComponent(password)}`
                 });
                 
-                console.log('Response status:', response.status);
-                const responseText = await response.text();
-                console.log('Response text:', responseText);
-                
-                let result;
-                try {
-                    result = JSON.parse(responseText);
-                } catch (parseError) {
-                    console.error('JSON parse error:', parseError);
-                    messageDiv.innerHTML = '<div class="error-message">Server response error. Check console for details.</div>';
-                    return;
+                const contentType = (response.headers.get('content-type') || '').toLowerCase();
+                let result = null;
+                if (contentType.includes('application/json')) {
+                    try {
+                        result = await response.json();
+                    } catch (_) {
+                        // fall back to text parsing below
+                    }
+                }
+                if (!result) {
+                    const text = await response.text();
+                    try {
+                        result = JSON.parse(text);
+                    } catch (_) {
+                        const snippet = text.replace(/<[^>]+>/g, '').slice(0, 200);
+                        messageDiv.innerHTML = `<div class="error-message">Unexpected server response (${response.status}). ${snippet ? ('Details: ' + snippet) : ''}</div>`;
+                        return;
+                    }
                 }
                 
-                if (result.success) {
+                if (result && result.success) {
                     messageDiv.innerHTML = '<div class="success-message">Login successful! Redirecting...</div>';
                     setTimeout(() => {
                         window.location.href = 'upload.html';
-                    }, 1000);
+                    }, 800);
                 } else {
-                    messageDiv.innerHTML = `<div class="error-message">${result.message || 'Invalid password. Please try again.'}</div>`;
+                    messageDiv.innerHTML = `<div class="error-message">${(result && result.message) || 'Invalid password. Please try again.'}</div>`;
                 }
             } catch (error) {
-                console.error('Fetch error:', error);
-                messageDiv.innerHTML = '<div class="error-message">Login failed. Please try again.</div>';
+                messageDiv.innerHTML = '<div class="error-message">Network error. Ensure the site is served by a PHP server.</div>';
             }
         });
+
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('password');
+            const passwordToggle = document.querySelector('.password-toggle');
+            const icon = passwordToggle.querySelector('i');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
     </script>
 </body>
 </html> 

@@ -404,6 +404,70 @@
             <div id="uploadMessage"></div>
         </div>
 
+        <!-- Principal Image Management Section -->
+        <div class="upload-section">
+            <h2>Principal Image Management</h2>
+            <p style="margin-bottom: 1rem; color: #666;">Upload a new principal image for the homepage. This will replace the current principal image shown on the main page.</p>
+            
+            <form id="principalImageForm">
+                <div class="form-group">
+                    <label for="principalImageFile">Select Principal Image:</label>
+                    <input type="file" id="principalImageFile" name="principalImage" accept="image/*" required>
+                </div>
+                
+                <div class="preview" id="principalImagePreview" style="display: none;">
+                    <img id="principalPreviewImg" src="" alt="Principal Image Preview">
+                </div>
+                
+                <div class="form-group">
+                    <label for="principalImageAlt">Alt Text (for accessibility):</label>
+                    <input type="text" id="principalImageAlt" name="altText" value="Principal of Krishna Gurukul School" required>
+                </div>
+                
+                <button type="submit" class="upload-btn" id="principalUploadBtn">Update Principal Image</button>
+            </form>
+            <div id="principalImageMessage"></div>
+            
+            <div style="margin-top: 2rem; padding: 1rem; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #667eea;">
+                <h4 style="margin-bottom: 0.5rem; color: #333;">Current Principal Image:</h4>
+                <div id="currentPrincipalImage">
+                    <div class="loading">Loading current image...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Managing Director Image Management Section -->
+        <div class="upload-section">
+            <h2>Managing Director Image Management</h2>
+            <p style="margin-bottom: 1rem; color: #666;">Upload a new managing director image for the about-us page. This will replace the current managing director image shown on the about-us page.</p>
+            
+            <form id="managingDirectorImageForm">
+                <div class="form-group">
+                    <label for="managingDirectorImageFile">Select Managing Director Image:</label>
+                    <input type="file" id="managingDirectorImageFile" name="managingDirectorImage" accept="image/*" required>
+                </div>
+                
+                <div class="preview" id="managingDirectorImagePreview" style="display: none;">
+                    <img id="managingDirectorPreviewImg" src="" alt="Managing Director Image Preview">
+                </div>
+                
+                <div class="form-group">
+                    <label for="managingDirectorImageAlt">Alt Text (for accessibility):</label>
+                    <input type="text" id="managingDirectorImageAlt" name="altText" value="Managing Director" required>
+                </div>
+                
+                <button type="submit" class="upload-btn" id="managingDirectorUploadBtn">Update Managing Director Image</button>
+            </form>
+            <div id="managingDirectorImageMessage"></div>
+            
+            <div style="margin-top: 2rem; padding: 1rem; background: #f8f9fa; border-radius: 8px; border-left: 4px solid #28a745;">
+                <h4 style="margin-bottom: 0.5rem; color: #333;">Current Managing Director Image:</h4>
+                <div id="currentManagingDirectorImage">
+                    <div class="loading">Loading current image...</div>
+                </div>
+            </div>
+        </div>
+
         <!-- Category Management Section -->
         <div class="category-section">
             <h2>Category Management</h2>
@@ -457,7 +521,9 @@
         // Check authentication
         async function checkAuth() {
             try {
-                const response = await fetch('check_auth.php');
+                const response = await fetch('check_auth.php', {
+                    credentials: 'same-origin'
+                });
                 const result = await response.json();
                 if (!result.authenticated) {
                     window.location.href = 'index.html';
@@ -470,7 +536,9 @@
         // Load categories
         async function loadCategories() {
             try {
-                const response = await fetch('categories.php');
+                const response = await fetch('categories.php', {
+                    credentials: 'same-origin'
+                });
                 const result = await response.json();
                 if (result.success) {
                     categories = result.categories;
@@ -550,7 +618,8 @@
                 await fetch('categories.php', {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ order: categories.map(c => c.id) })
+                    body: JSON.stringify({ order: categories.map(c => c.id) }),
+                    credentials: 'same-origin'
                 });
             } catch (_) {}
         }
@@ -571,7 +640,8 @@
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ name: name })
+                    body: JSON.stringify({ name: name }),
+                    credentials: 'same-origin'
                 });
                 
                 const result = await response.json();
@@ -624,7 +694,8 @@
                     body: JSON.stringify({ 
                         id: currentEditCategory.id, 
                         name: name 
-                    })
+                    }),
+                    credentials: 'same-origin'
                 });
                 
                 const result = await response.json();
@@ -653,7 +724,8 @@
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ id: categoryId })
+                    body: JSON.stringify({ id: categoryId }),
+                    credentials: 'same-origin'
                 });
                 
                 const result = await response.json();
@@ -795,7 +867,8 @@
                 try {
                     const response = await fetch('upload.php', {
                         method: 'POST',
-                        body: formData
+                        body: formData,
+                        credentials: 'same-origin'
                     });
                     const result = await response.json();
                     if (result && result.success) {
@@ -812,7 +885,8 @@
                                 await fetch('categories.php', {
                                     method: 'PUT',
                                     headers: { 'Content-Type': 'application/json' },
-                                    body: JSON.stringify({ id: categoryId, name: cat.name, description: cat.description || '', cover: result.url })
+                                    body: JSON.stringify({ id: categoryId, name: cat.name, description: cat.description || '', cover: result.url }),
+                                    credentials: 'same-origin'
                                 });
                                 // Refresh local categories view
                                 // Do not reload categories mid-upload; just update local state and UI to preserve selection
@@ -869,7 +943,8 @@
                 const res = await fetch('categories.php', {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ id: cat.id, name: cat.name, description: cat.description || '', cover: imageUrl.replace('../', '') })
+                    body: JSON.stringify({ id: cat.id, name: cat.name, description: cat.description || '', cover: imageUrl.replace('../', '') }),
+                    credentials: 'same-origin'
                 });
                 const result = await res.json();
                 if (result && result.success) {
@@ -941,7 +1016,8 @@
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
                     },
-                    body: `id=${id}`
+                    body: `id=${id}`,
+                    credentials: 'same-origin'
                 });
                 
                 const result = await response.json();
@@ -963,6 +1039,228 @@
             saveCategoryEdit();
         });
         
+        // Principal image preview
+        document.getElementById('principalImageFile').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            const previewContainer = document.getElementById('principalImagePreview');
+            const previewImg = document.getElementById('principalPreviewImg');
+            
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(ev) {
+                    previewImg.src = ev.target.result;
+                    previewContainer.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                previewContainer.style.display = 'none';
+                previewImg.src = '';
+            }
+        });
+
+        // Principal image upload form
+        document.getElementById('principalImageForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const fileInput = document.getElementById('principalImageFile');
+            const altTextInput = document.getElementById('principalImageAlt');
+            const uploadBtn = document.getElementById('principalUploadBtn');
+            const messageDiv = document.getElementById('principalImageMessage');
+            
+            if (!fileInput.files[0]) {
+                messageDiv.innerHTML = '<div class="message error">Please select a principal image.</div>';
+                return;
+            }
+            
+            if (!altTextInput.value.trim()) {
+                messageDiv.innerHTML = '<div class="message error">Please enter alt text for accessibility.</div>';
+                return;
+            }
+            
+            uploadBtn.disabled = true;
+            uploadBtn.textContent = 'Updating...';
+            messageDiv.innerHTML = '';
+            
+            try {
+                // Compress the image to respect server limits
+                const processedFile = await compressImageToJpeg(fileInput.files[0], 1200, 200);
+                const formData = new FormData();
+                formData.append('principalImage', processedFile, processedFile.name);
+                formData.append('altText', altTextInput.value.trim());
+                formData.append('type', 'principal');
+                
+                const response = await fetch('upload.php', {
+                    method: 'POST',
+                    body: formData,
+                    credentials: 'same-origin' // Include session cookies
+                });
+                
+                const result = await response.json();
+                
+                if (result && result.success) {
+                    messageDiv.innerHTML = '<div class="message success">Principal image updated successfully!</div>';
+                    // Reset form
+                    fileInput.value = '';
+                    document.getElementById('principalImagePreview').style.display = 'none';
+                    // Refresh current image display with cache busting
+                    loadCurrentPrincipalImage();
+                    // Force browser to reload the image by adding timestamp
+                    setTimeout(() => {
+                        const currentImage = document.querySelector('#currentPrincipalImage img');
+                        if (currentImage) {
+                            currentImage.src = currentImage.src.split('?')[0] + '?t=' + Date.now();
+                        }
+                    }, 500);
+                } else {
+                    messageDiv.innerHTML = `<div class="message error">Error: ${result.message || 'Failed to update principal image'}</div>`;
+                }
+            } catch (error) {
+                messageDiv.innerHTML = '<div class="message error">Error updating principal image. Please try again.</div>';
+                console.error('Error:', error);
+            }
+            
+            uploadBtn.disabled = false;
+            uploadBtn.textContent = 'Update Principal Image';
+        });
+
+        // Managing Director image preview
+        document.getElementById('managingDirectorImageFile').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            const previewContainer = document.getElementById('managingDirectorImagePreview');
+            const previewImg = document.getElementById('managingDirectorPreviewImg');
+            
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(ev) {
+                    previewImg.src = ev.target.result;
+                    previewContainer.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                previewContainer.style.display = 'none';
+                previewImg.src = '';
+            }
+        });
+
+        // Managing Director image upload form
+        document.getElementById('managingDirectorImageForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const fileInput = document.getElementById('managingDirectorImageFile');
+            const altTextInput = document.getElementById('managingDirectorImageAlt');
+            const uploadBtn = document.getElementById('managingDirectorUploadBtn');
+            const messageDiv = document.getElementById('managingDirectorImageMessage');
+            
+            if (!fileInput.files[0]) {
+                messageDiv.innerHTML = '<div class="message error">Please select a managing director image.</div>';
+                return;
+            }
+            
+            if (!altTextInput.value.trim()) {
+                messageDiv.innerHTML = '<div class="message error">Please enter alt text for accessibility.</div>';
+                return;
+            }
+            
+            uploadBtn.disabled = true;
+            uploadBtn.textContent = 'Updating...';
+            messageDiv.innerHTML = '';
+            
+            try {
+                // Compress the image to respect server limits
+                const processedFile = await compressImageToJpeg(fileInput.files[0], 1200, 200);
+                const formData = new FormData();
+                formData.append('principalImage', processedFile, processedFile.name);
+                formData.append('altText', altTextInput.value.trim());
+                formData.append('type', 'managingDirector');
+                
+                const response = await fetch('upload.php', {
+                    method: 'POST',
+                    body: formData,
+                    credentials: 'same-origin' // Include session cookies
+                });
+                
+                const result = await response.json();
+                
+                if (result && result.success) {
+                    messageDiv.innerHTML = '<div class="message success">Managing Director image updated successfully!</div>';
+                    // Reset form
+                    fileInput.value = '';
+                    document.getElementById('managingDirectorImagePreview').style.display = 'none';
+                    // Refresh current image display with cache busting
+                    loadCurrentManagingDirectorImage();
+                    // Force browser to reload the image by adding timestamp
+                    setTimeout(() => {
+                        const currentImage = document.querySelector('#currentManagingDirectorImage img');
+                        if (currentImage) {
+                            currentImage.src = currentImage.src.split('?')[0] + '?t=' + Date.now();
+                        }
+                    }, 500);
+                } else {
+                    messageDiv.innerHTML = `<div class="message error">Error: ${result.message || 'Failed to update managing director image'}</div>`;
+                }
+            } catch (error) {
+                messageDiv.innerHTML = '<div class="message error">Error updating managing director image. Please try again.</div>';
+                console.error('Error:', error);
+            }
+            
+            uploadBtn.disabled = false;
+            uploadBtn.textContent = 'Update Managing Director Image';
+        });
+
+        // Load current principal image
+        async function loadCurrentPrincipalImage() {
+            const container = document.getElementById('currentPrincipalImage');
+            
+            try {
+                // Check if there's a principal image in the images directory
+                const response = await fetch('../images/principa.jpg');
+                if (response.ok) {
+                    container.innerHTML = `
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <img src="../images/principa.jpg?t=${Date.now()}" alt="Current Principal Image" style="width: 120px; height: 120px; object-fit: cover; border-radius: 8px; border: 2px solid #e1e5e9;">
+                            <div>
+                                <p><strong>File:</strong> principa.jpg</p>
+                                <p><strong>Location:</strong> images/principa.jpg</p>
+                                <p><strong>Used on:</strong> Homepage (Principal section)</p>
+                                <p><strong>Last Updated:</strong> ${new Date().toLocaleString()}</p>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    container.innerHTML = '<div style="color: #666;">No principal image found. Please upload one.</div>';
+                }
+            } catch (error) {
+                container.innerHTML = '<div style="color: #666;">Error loading current principal image.</div>';
+            }
+        }
+
+        // Load current managing director image
+        async function loadCurrentManagingDirectorImage() {
+            const container = document.getElementById('currentManagingDirectorImage');
+            
+            try {
+                // Check if there's a managing director image in the images directory
+                const response = await fetch('../images/managing_director.jpg');
+                if (response.ok) {
+                    container.innerHTML = `
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <img src="../images/managing_director.jpg?t=${Date.now()}" alt="Current Managing Director Image" style="width: 120px; height: 120px; object-fit: cover; border-radius: 8px; border: 2px solid #e1e5e9;">
+                            <div>
+                                <p><strong>File:</strong> managing_director.jpg</p>
+                                <p><strong>Location:</strong> images/managing_director.jpg</p>
+                                <p><strong>Used on:</strong> About Us page (Managing Director section)</p>
+                                <p><strong>Last Updated:</strong> ${new Date().toLocaleString()}</p>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    container.innerHTML = '<div style="color: #666;">No managing director image found. Please upload one.</div>';
+                }
+            } catch (error) {
+                container.innerHTML = '<div style="color: #666;">Error loading current managing director image.</div>';
+            }
+        }
+        
         // Close modal when clicking outside
         window.onclick = function(event) {
             const modal = document.getElementById('editCategoryModal');
@@ -975,6 +1273,8 @@
         checkAuth();
         loadCategories();
         loadGallery();
+        loadCurrentPrincipalImage();
+        loadCurrentManagingDirectorImage();
     </script>
 </body>
 </html> 
