@@ -3,7 +3,7 @@ session_start();
 header('Content-Type: application/json');
 
 // Admin password - CHANGE THIS TO A SECURE PASSWORD
-$admin_password = 'krishnagurukul2024';
+$admin_password = 'bvy2vxz4c';
 
 // Check if password is provided
 if (!isset($_POST['password'])) {
